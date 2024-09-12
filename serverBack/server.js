@@ -1,6 +1,6 @@
 import express from "express";
 import productsManager from "./src/data/products.manager.js";
-import { create, destroyProduct, getAllProducts, getProductById, updateProduct } from "./src/controllers/products.controlers.js";
+import { create, destroyProduct, getAllProducts, getProductById, updateProduct } from "./src/controllers/products.controllers.js";
 
 
 try {
