@@ -1,6 +1,44 @@
-[{
-    "id": "1",
-    "name": "Product 1",    
-    "description": "Description 1",
-    "price": 1000
-}]
+[
+  {
+    "title": "remeras",
+    "price": "2000",
+    "quantity": "50",
+    "id": "c09ebce7d84ab42f204f7f9d"
+  },
+  {
+    "title": "remeras",
+    "price": "2000",
+    "quantity": "50",
+    "id": "4d4425c7007072941dd0891d"
+  },
+  {
+    "title": "remeras",
+    "price": "2000",
+    "quantity": "50",
+    "id": "a74107bf1c7f35c373256307"
+  },
+  {
+    "title": "remeras",
+    "price": "2000",
+    "quantity": "50",
+    "id": "d6bb17e15307f7e2e09a3ca1"
+  },
+  {
+    "title": "remeras",
+    "price": "2000",
+    "quantity": "50",
+    "id": "5a8cb64adfe0ad8d27f37445"
+  },
+  {
+    "title": "remeras",
+    "price": "2000",
+    "quantity": "50",
+    "id": "4c245deef6e70d2f59ca8603"
+  },
+  {
+    "title": "Pantalones",
+    "price": "2000",
+    "quantity": "50",
+    "id": "8623e4a0ed1bc65f46e83e5f"
+  }
+]

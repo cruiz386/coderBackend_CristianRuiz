@@ -7,6 +7,7 @@ class ProductsManager {
     this.exists();
   }
 
+
   exists() {
     const exist = fs.existsSync(this.path);
     if (!exist) {
@@ -17,7 +18,7 @@ class ProductsManager {
     }
   }
 
-  async read() {
+  async readAll() {
     try {
       const data = await fs.promises.readFile(this.path, "utf-8");
       const parsedData = JSON.parse(data);
@@ -30,7 +31,7 @@ class ProductsManager {
 
   async readById(id) {
     try {
-      const allProducts = await this.read();
+      const allProducts = await this.readAll();
       // Comparar ambos como cadenas de texto
       const product = allProducts.find((product) => product.id === id.toString());
       if (!product) {
@@ -48,8 +49,9 @@ class ProductsManager {
   async create(data) {
     try {
       data.id = crypto.randomBytes(12).toString("hex"); // Genera un ID único
-      const allProducts = await this.read();
+      const allProducts = await this.readAll();
       allProducts.push(data);
+            
       const stringAll = JSON.stringify(allProducts, null, 2);
       await fs.promises.writeFile(this.path, stringAll);
       return data.id;
@@ -61,7 +63,7 @@ class ProductsManager {
 
   async update(id, newData) {
     try {
-      const allProducts = await this.read();
+      const allProducts = await this.readAll();
       const index = allProducts.findIndex((product) => product.id === id.toString());
       if (index === -1) {
         throw new Error("Product not found");
@@ -78,7 +80,10 @@ class ProductsManager {
 
   async destroy(id) {
     try {
-      const allProducts = await this.read();
+      // if (!id) {
+      //   throw new Error("Product ID is required");
+      // }
+      const allProducts = await this.readAll();
       const index = allProducts.findIndex((product) => product.id === id.toString());
       if (index === -1) {
         throw new Error("Product not found");
@@ -92,6 +97,9 @@ class ProductsManager {
       throw error;
     }
   }
+  
+
+
 }
 
 const productsManager = new ProductsManager("./src/data/files/products.json");
