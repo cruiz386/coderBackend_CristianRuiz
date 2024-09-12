@@ -7,7 +7,6 @@ class ProductsManager {
     this.exists();
   }
 
-
   exists() {
     const exist = fs.existsSync(this.path);
     if (!exist) {
@@ -25,7 +24,7 @@ class ProductsManager {
       return parsedData;
     } catch (error) {
       console.log(error);
-      throw new Error("Error reading products");
+      //throw new Error("Error reading products");
     }
   }
 
@@ -33,16 +32,19 @@ class ProductsManager {
     try {
       const allProducts = await this.readAll();
       // Comparar ambos como cadenas de texto
-      const product = allProducts.find((product) => product.id === id.toString());
+      const product = allProducts.find(
+        (product) => product.id === id.toString()
+      );
       if (!product) {
         const error = new Error("Product not found");
         error.statusCode = 404;
-        throw error;
+        console.log(error);
+        //throw error;
       }
       return product;
     } catch (error) {
       console.log(error);
-      throw error;
+      //throw error;
     }
   }
 
@@ -51,20 +53,22 @@ class ProductsManager {
       data.id = crypto.randomBytes(12).toString("hex"); // Genera un ID único
       const allProducts = await this.readAll();
       allProducts.push(data);
-            
+
       const stringAll = JSON.stringify(allProducts, null, 2);
       await fs.promises.writeFile(this.path, stringAll);
       return data.id;
     } catch (error) {
       console.log(error);
-      throw new Error("Error creating product");
+      //throw new Error("Error creating product");
     }
   }
 
   async update(id, newData) {
     try {
       const allProducts = await this.readAll();
-      const index = allProducts.findIndex((product) => product.id === id.toString());
+      const index = allProducts.findIndex(
+        (product) => product.id === id.toString()
+      );
       if (index === -1) {
         throw new Error("Product not found");
       }
@@ -74,19 +78,23 @@ class ProductsManager {
       return allProducts[index];
     } catch (error) {
       console.log(error);
-      throw error;
+      //throw error;
     }
   }
 
   async destroy(id) {
     try {
-      // if (!id) {
-      //   throw new Error("Product ID is required");
-      // }
+      if (!id) {
+        //   throw new Error("Product ID is required");
+        return null;
+      }
       const allProducts = await this.readAll();
-      const index = allProducts.findIndex((product) => product.id === id.toString());
+      const index = allProducts.findIndex(
+        (product) => product.id === id.toString()
+      );
       if (index === -1) {
-        throw new Error("Product not found");
+        return null;
+        //throw new Error("Product not found");
       }
       allProducts.splice(index, 1);
       const stringAll = JSON.stringify(allProducts, null, 2);
@@ -94,12 +102,9 @@ class ProductsManager {
       return id;
     } catch (error) {
       console.log(error);
-      throw error;
+      //throw error;
     }
   }
-  
-
-
 }
 
 const productsManager = new ProductsManager("./src/data/files/products.json");
