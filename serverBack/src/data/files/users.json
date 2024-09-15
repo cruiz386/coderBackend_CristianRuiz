@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Cristian",
+    "email": "Cristian@mail.com",
+    "password": "1234",
+    "role": "admin",
+    "id": "6dd4c7aac3a4612a37299bdb"
+  },
+  {
+    "name": "Juan",
+    "email": "Juan@mail.com",
+    "password": "1234",
+    "role": "admin",
+    "id": "0cb5b56c8264adcec9e53bdc"
+  },
+  {
+    "name": "Pedro",
+    "email": "Pedro@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "900db65ab8d097168c8e56de"
+  },
+  {
+    "name": "Jose",
+    "email": "Jose@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "3701bbd3de4faa6935b9ba34"
+  },
+  {
+    "name": "Jose",
+    "email": "Jose@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "f5063e45b03e9debe93582f8"
+  },
+  {
+    "name": "Jose",
+    "email": "Jose@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "81091addb4ec4576caadbafa"
+  }
+]

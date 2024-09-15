@@ -1,5 +1,6 @@
 import express from "express";
 import productsManager from "./src/data/products.manager.js";
+import userController from "./src/controllers/users.controllers.js";
 import { create, destroyProduct, getAllProducts, getProductById, updateProduct } from "./src/controllers/products.controllers.js";
 
 
@@ -20,6 +21,11 @@ try {
   server.post("/api/products", create);
   server.put("/api/products/:pid", updateProduct);
   server.delete("/api/products/:pid", destroyProduct);
+
+  server.get("/api/users", userController.readUsers);
+  server.post("/api/users", userController.createUser);
+
+
 } catch (error) {
   console.log(error);
 }
