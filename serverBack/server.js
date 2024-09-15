@@ -1,5 +1,5 @@
 import express from "express";
-import productsManager from "./src/data/products.manager.js";
+import productsManager from "./src/data/managers/products.manager.js";
 import userController from "./src/controllers/users.controllers.js";
 import { create, destroyProduct, getAllProducts, getProductById, updateProduct } from "./src/controllers/products.controllers.js";
 
