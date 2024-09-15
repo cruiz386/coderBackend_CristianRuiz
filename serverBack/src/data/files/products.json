@@ -21,18 +21,6 @@
     "title": "remeras",
     "price": "2000",
     "quantity": "50",
-    "id": "d6bb17e15307f7e2e09a3ca1"
-  },
-  {
-    "title": "remeras",
-    "price": "2000",
-    "quantity": "50",
-    "id": "5a8cb64adfe0ad8d27f37445"
-  },
-  {
-    "title": "remeras",
-    "price": "2000",
-    "quantity": "50",
     "id": "4c245deef6e70d2f59ca8603"
   },
   {
@@ -40,5 +28,17 @@
     "price": "2000",
     "quantity": "50",
     "id": "8623e4a0ed1bc65f46e83e5f"
+  },
+  {
+    "title": "Pantalones",
+    "price": "2000",
+    "quantity": "50",
+    "id": "e5dbebc7ec8c4fca26acc6ba"
+  },
+  {
+    "title": "Pantalones",
+    "price": "2000",
+    "quantity": "50",
+    "id": "c779eb8c919bb437782f787a"
   }
 ]
