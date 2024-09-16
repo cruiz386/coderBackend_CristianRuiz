@@ -42,6 +42,50 @@ class UserController {
         .json({ message: error.message || "API ERROR" });
     }
   }
+
+  
+async  deleteUser(req, res) {
+    try {
+      const { uid } = req.params;
+      const user = await usersManager.destroy(uid);
+      return res.status(200).json({ statusCode: 200, response: user });
+    } catch (error) {
+      const { statusCode, message } = error;
+      return res
+        .status(statusCode || 500)
+        .json({ message: message || "FATAL ERROR" });
+    }
+  }
+
+  async  getUserById(req, res) {
+    try {
+      const { uid } = req.params;
+      const user = await usersManager.readById(uid);
+      return res.status(200).json({ statusCode: 200, response: user });
+    } catch (error) {
+      const { statusCode, message } = error;
+      return res
+        .status(statusCode || 500)
+        .json({ message: message || "FATAL ERROR" });
+    }
+  } 
+
+
+  
+ async  updateUser(req, res) {
+    try {
+      const { uid } = req.params;
+      const data = req.body;
+      const user = await usersManager.update(uid, data);
+      return res.status(200).json({ statusCode: 200, response: user });
+    } catch (error) {
+      const { statusCode, message } = error;
+      return res
+        .status(statusCode || 500)
+        .json({ message: message || "FATAL ERROR" });
+    }
+  }
+
 }
 
 const userController = new UserController();

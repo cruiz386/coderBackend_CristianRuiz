@@ -24,7 +24,8 @@ try {
 
   server.get("/api/users", userController.readUsers);
   server.post("/api/users", userController.createUser);
-
+  server.put("/api/users/:uid", userController.updateUser);
+  server.delete("/api/users/:uid", userController.deleteUser);
 
 } catch (error) {
   console.log(error);
