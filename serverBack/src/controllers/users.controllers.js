@@ -69,8 +69,6 @@ async  deleteUser(req, res) {
         .json({ message: message || "FATAL ERROR" });
     }
   } 
-
-
   
  async  updateUser(req, res) {
     try {
