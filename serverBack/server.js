@@ -17,9 +17,10 @@ try {
 
   server.use(cors());
 
-  server.use(router);
+  server.use( router)
   server.use(errorHandler);
   server.use(pathHandler);
+
 } catch (error) {
   console.log(error);
 }

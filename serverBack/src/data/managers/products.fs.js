@@ -17,36 +17,41 @@ class ProductsManager {
     }
   }
 
-  async readAll() {
+  async readAll(category) {
     try {
       const data = await fs.promises.readFile(this.path, "utf-8");
-      const parsedData = JSON.parse(data);
-      return parsedData;
+      const parseData = JSON.parse(data);
+      //console.log(parseData);
+      if (category) {
+        const filteredData = parseData.filter(
+          (each) => each.category === category
+        );
+        return filteredData;
+      } else {
+        return parseData;
+      }
     } catch (error) {
       console.log(error);
-      //throw new Error("Error reading products");
+      throw error;
     }
   }
 
   async readById(id) {
     try {
       const allProducts = await this.readAll();
-      // Comparar ambos como cadenas de texto
-      const product = allProducts.find(
-        (product) => product.id === id.toString()
-      );
+      const product = allProducts.find((product) => product.id === id.toString());
       if (!product) {
         const error = new Error("Product not found");
-        error.statusCode = 404;
-        console.log(error);
-        //throw error;
+        error.statusCode = 404; // Establecer código de estado 404
+        throw error; // Lanzar el error para que pueda ser capturado por el middleware de manejo de errores en Express
       }
       return product;
     } catch (error) {
       console.log(error);
-      //throw error;
+      throw error;
     }
   }
+  
 
   async create(data) {
     try {
@@ -59,7 +64,7 @@ class ProductsManager {
       return data.id;
     } catch (error) {
       console.log(error);
-      //throw new Error("Error creating product");
+      throw error;
     }
   }
 
@@ -78,7 +83,7 @@ class ProductsManager {
       return allProducts[index];
     } catch (error) {
       console.log(error);
-      //throw error;
+      throw error;
     }
   }
 
@@ -102,7 +107,7 @@ class ProductsManager {
       return id;
     } catch (error) {
       console.log(error);
-      //throw error;
+      throw error;
     }
   }
 }

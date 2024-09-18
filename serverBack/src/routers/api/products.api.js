@@ -2,17 +2,15 @@ import { Router } from "express"
 import { create, destroyProduct, getAllProducts, getProductById, updateProduct } from "../../controllers/products.controllers.js";
 import isValidData from "../../middlewares/isValidData.mid.js";
 
-const productsRouter = Router()
+const productsRouter = Router();
 
-productsRouter.get('/api/products/',getAllProducts)
-productsRouter.get('/api/products/:pid',getProductById)
+productsRouter.get('/',getAllProducts)
+productsRouter.get('/:pid',getProductById)
 
 productsRouter.post("/", isValidData, create);
 
-productsRouter.post('/api/products',create)
-
-productsRouter.put('/api/products/:pid',updateProduct)
-productsRouter.delete('/api/products/:pid',destroyProduct)
+productsRouter.put('/:pid',updateProduct)
+productsRouter.delete('/:pid',destroyProduct)
 
 export default productsRouter
 

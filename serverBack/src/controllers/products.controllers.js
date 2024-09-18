@@ -2,15 +2,19 @@ import productsManager from "../data/managers/products.fs.js";
 
 async function getAllProducts(req, res, next) {
   try {
-    const products = await productsManager.readAll();
-    if (products.length > 0) {
-      return res.status(200).json({ statusCode: 200, response: products });
+    let { category } = req.query;
+    let response;
+    if (!category) {
+      response = await productsManager.readAll();
     } else {
-      return res.status(404).json({
-        statusCode: 404,
-        response: null,
-        message: "No products found",
-      });
+      response = await productsManager.readAll(category);
+    }
+    if (response.length > 0) {
+      return res.status(200).json({ message: "PRODUCTS READ", response });
+    } else {
+      const error = new Error("NOT FOUND PRODUCTS");
+      error.statusCode = 404;
+      throw error;
     }
   } catch (error) {
     return next(error);

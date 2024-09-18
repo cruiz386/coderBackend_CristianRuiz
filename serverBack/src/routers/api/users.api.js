@@ -3,11 +3,11 @@ import userController from "../../controllers/users.controllers.js";
 
 const usersRouter = Router()
 
-usersRouter.get('/api/users',userController.readUsers)
-usersRouter.get('/api/users/:uid"',userController.readUsers)
-usersRouter.post('/api/users',userController.createUser)
-usersRouter.put('/api/users/:uid"',userController.updateUser)
-usersRouter.delete('/api/users/:uid"',userController.deleteUser)
+usersRouter.get('/',userController.readUsers)
+usersRouter.get('/:uid"',userController.readUsers)
+usersRouter.post('/',userController.createUser)
+usersRouter.put('/:uid"',userController.updateUser)
+usersRouter.delete('/:uid"',userController.deleteUser)
 
 
 export default usersRouter
