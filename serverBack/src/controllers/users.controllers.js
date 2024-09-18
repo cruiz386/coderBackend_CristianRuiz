@@ -3,7 +3,7 @@ import usersManager from "../data/managers/users.fs.js";
 class UserController {
   constructor() {}
 
-  async readUsers(req, res) {
+  async readUsers(req, res, next) {
     try {
       const { role } = req.query;
       const data = await usersManager.readAll(role);
@@ -15,14 +15,11 @@ class UserController {
         throw error;
       }
     } catch (error) {
-      console.log(error);
-      return res
-        .status(error.statusCode || 500)
-        .json({ message: error.message || "API ERROR" });
+      return next(error);
     }
   }
 
-  async createUser(req, res) {
+  async createUser(req, res, next) {
     try {
       const data = req.body;
       const { email, password } = data;
@@ -36,54 +33,40 @@ class UserController {
         .status(201)
         .json({ message: `user created with id ${userId}` });
     } catch (error) {
-      console.log(error);
-      return res
-        .status(error.statusCode || 500)
-        .json({ message: error.message || "API ERROR" });
+      return next(error);
     }
   }
 
-  
-async  deleteUser(req, res) {
+  async deleteUser(req, res, next) {
     try {
       const { uid } = req.params;
       const user = await usersManager.destroy(uid);
       return res.status(200).json({ statusCode: 200, response: user });
     } catch (error) {
-      const { statusCode, message } = error;
-      return res
-        .status(statusCode || 500)
-        .json({ message: message || "FATAL ERROR" });
+      return next(error);
     }
   }
 
-  async  getUserById(req, res) {
+  async getUserById(req, res, next) {
     try {
       const { uid } = req.params;
       const user = await usersManager.readById(uid);
       return res.status(200).json({ statusCode: 200, response: user });
     } catch (error) {
-      const { statusCode, message } = error;
-      return res
-        .status(statusCode || 500)
-        .json({ message: message || "FATAL ERROR" });
+      return next(error);
     }
-  } 
-  
- async  updateUser(req, res) {
+  }
+
+  async updateUser(req, res, next) {
     try {
       const { uid } = req.params;
       const data = req.body;
       const user = await usersManager.update(uid, data);
       return res.status(200).json({ statusCode: 200, response: user });
     } catch (error) {
-      const { statusCode, message } = error;
-      return res
-        .status(statusCode || 500)
-        .json({ message: message || "FATAL ERROR" });
+      return next(error);
     }
   }
-
 }
 
 const userController = new UserController();
