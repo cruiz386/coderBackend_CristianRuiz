@@ -24,15 +24,21 @@
     "id": "8623e4a0ed1bc65f46e83e5f"
   },
   {
-    "title": "Pantalones",
+    "title": "prueba update",
     "price": "2000",
     "quantity": "50",
     "id": "e5dbebc7ec8c4fca26acc6ba"
   },
   {
-    "title": "Pantalones",
+    "title": "Campera",
     "price": "2000",
-    "quantity": "50",
-    "id": "c779eb8c919bb437782f787a"
+    "stock": "50",
+    "id": "c7efedfc954b5f2bdc002dda"
+  },
+  {
+    "title": "Campera",
+    "price": "2000",
+    "stock": "50",
+    "id": "ca7bcf10164501f5962e63ae"
   }
 ]
