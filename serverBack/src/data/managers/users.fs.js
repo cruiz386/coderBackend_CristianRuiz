@@ -43,6 +43,43 @@ class UsersManager {
       throw error;
     }
   }
+
+  async update(id, newData) {
+    try {
+      const allUsers = await this.readAll();
+      const index = allUsers.findIndex((user) => user.id === id.toString());
+      if (index === -1) {
+        throw new Error("User not found");
+      }
+      allUsers[index] = { ...allUsers[index], ...newData };
+      const stringAll = JSON.stringify(allUsers, null, 2);
+      await fs.promises.writeFile(this.path, stringAll);
+      return allUsers[index];
+    } catch (error) {
+      console.log(error);
+      //throw error;
+    }
+  }
+
+  async destroy(id) {
+    try {
+      if (!id) {
+        throw new Error("User ID is required");
+      }
+      const allUsers = await this.readAll();
+      const index = allUsers.findIndex((user) => user.id === id.toString());
+      if (index === -1) {
+        throw new Error("User not found");
+      }
+      allUsers.splice(index, 1);
+      const stringAll = JSON.stringify(allUsers, null, 2);
+      await fs.promises.writeFile(this.path, stringAll);
+      return id;
+    } catch (error) {
+      console.log(error);
+      //throw error;
+    }
+  }
 }
 
 const usersManager = new UsersManager();

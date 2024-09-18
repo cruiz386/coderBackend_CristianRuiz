@@ -1,12 +1,5 @@
 [
   {
-    "name": "Cristian",
-    "email": "Cristian@mail.com",
-    "password": "1234",
-    "role": "admin",
-    "id": "6dd4c7aac3a4612a37299bdb"
-  },
-  {
     "name": "Juan",
     "email": "Juan@mail.com",
     "password": "1234",
