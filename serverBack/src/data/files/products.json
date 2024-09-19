@@ -18,27 +18,37 @@
     "id": "4c245deef6e70d2f59ca8603"
   },
   {
-    "title": "Pantalones",
-    "price": "2000",
+    "title": "Samsung A14",
+    "price": "273000",
     "quantity": "50",
-    "id": "8623e4a0ed1bc65f46e83e5f"
+    "id": "8623e4a0ed1bc65f46e83e5f",
+    "photo": "https://tienda.personal.com.ar/images/720/webp/Samsung_A14_Negro_R30_min_bab78f47a3.png",
+    "category": "Cell phone",
+    "stock": "5"
   },
   {
-    "title": "prueba update",
-    "price": "2000",
+    "title": "Samsung A14",
+    "price": "273000",
     "quantity": "50",
-    "id": "e5dbebc7ec8c4fca26acc6ba"
+    "id": "e5dbebc7ec8c4fca26acc6ba",
+    "photo": "https://tienda.personal.com.ar/images/720/webp/Samsung_A14_Negro_R30_min_bab78f47a3.png",
+    "category": "Cell phone",
+    "stock": "5"
   },
   {
-    "title": "Campera",
-    "price": "2000",
-    "stock": "50",
-    "id": "c7efedfc954b5f2bdc002dda"
+    "title": "Samsung A14",
+    "price": "273000",
+    "stock": "5",
+    "id": "c7efedfc954b5f2bdc002dda",
+    "photo": "https://tienda.personal.com.ar/images/720/webp/Samsung_A14_Negro_R30_min_bab78f47a3.png",
+    "category": "Cell phone"
   },
   {
-    "title": "Campera",
-    "price": "2000",
-    "stock": "50",
-    "id": "ca7bcf10164501f5962e63ae"
+    "title": "Samsung A14",
+    "price": "273000",
+    "stock": "5",
+    "id": "ca7bcf10164501f5962e63ae",
+    "photo": "https://tienda.personal.com.ar/images/720/webp/Samsung_A14_Negro_R30_min_bab78f47a3.png",
+    "category": "Cell phone"
   }
 ]

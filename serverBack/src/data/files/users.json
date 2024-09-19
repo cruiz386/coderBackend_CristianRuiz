@@ -33,5 +33,33 @@
     "password": "1234",
     "role": "user",
     "id": "81091addb4ec4576caadbafa"
+  },
+  {
+    "name": "Jose",
+    "email": "Jose@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "d7335eb1ae90e8d53d952b35"
+  },
+  {
+    "name": "Jose",
+    "email": "Jose@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "99f4bfefbfd9ce49d3489ba9"
+  },
+  {
+    "name": "Jose",
+    "email": "Jose@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "932d439f3cc822618be77aad"
+  },
+  {
+    "name": "Jose",
+    "email": "Jose@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "22e70e41a578715a86e259ba"
   }
 ]

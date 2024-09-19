@@ -42,8 +42,8 @@ class ProductsManager {
       const product = allProducts.find((product) => product.id === id.toString());
       if (!product) {
         const error = new Error("Product not found");
-        error.statusCode = 404; // Establecer código de estado 404
-        throw error; // Lanzar el error para que pueda ser capturado por el middleware de manejo de errores en Express
+        error.statusCode = 404; 
+        throw error; 
       }
       return product;
     } catch (error) {

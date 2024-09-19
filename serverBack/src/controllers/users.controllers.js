@@ -1,4 +1,4 @@
-import usersManager from "../data/managers/users.fs.js";
+import usersManager from "../data/managers/users.manager.js";
 
 class UserController {
   constructor() {}
@@ -47,7 +47,7 @@ class UserController {
     }
   }
 
-  async getUserById(req, res, next) {
+  async readUserById(req, res, next) {
     try {
       const { uid } = req.params;
       const user = await usersManager.readById(uid);
