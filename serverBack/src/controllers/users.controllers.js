@@ -1,4 +1,10 @@
-import usersManager from "../data/managers/users.manager.js";
+import usersFileManager from "../data/files/users.fileManager.js";
+import usersMemoryManager from "../data/memory/users.memoryManager.js";
+
+async function syncUserManagers() {
+  const usersFromFile = await usersFileManager.readAll();
+  usersMemoryManager.sync(usersFromFile);
+}
 
 class UserController {
   constructor() {}
@@ -6,7 +12,10 @@ class UserController {
   async readUsers(req, res, next) {
     try {
       const { role } = req.query;
-      const data = await usersManager.readAll(role);
+
+      await syncUserManagers();
+
+      const data = await usersFileManager.readAll(role);
       if (data.length > 0) {
         return res.status(200).json({ data, message: "users fetched" });
       } else {
@@ -28,7 +37,10 @@ class UserController {
         error.statusCode = 400;
         throw error;
       }
-      const userId = await usersManager.create(data);
+      const userId = await usersFileManager.create(data);
+
+      await syncUserManagers();
+
       return res
         .status(201)
         .json({ message: `user created with id ${userId}` });
@@ -40,7 +52,10 @@ class UserController {
   async deleteUser(req, res, next) {
     try {
       const { uid } = req.params;
-      const user = await usersManager.destroy(uid);
+      const user = await usersFileManager.destroy(uid);
+
+      await syncUserManagers();
+
       return res.status(200).json({ statusCode: 200, response: user });
     } catch (error) {
       return next(error);
@@ -50,7 +65,10 @@ class UserController {
   async readUserById(req, res, next) {
     try {
       const { uid } = req.params;
-      const user = await usersManager.readById(uid);
+
+      await syncUserManagers();
+
+      const user = await usersFileManager.readById(uid);
       return res.status(200).json({ statusCode: 200, response: user });
     } catch (error) {
       return next(error);
@@ -61,7 +79,11 @@ class UserController {
     try {
       const { uid } = req.params;
       const data = req.body;
-      const user = await usersManager.update(uid, data);
+
+      const user = await usersFileManager.update(uid, data);
+
+      await syncUserManagers();
+
       return res.status(200).json({ statusCode: 200, response: user });
     } catch (error) {
       return next(error);

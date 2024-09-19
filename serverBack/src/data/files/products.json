@@ -1,54 +1,34 @@
 [
   {
-    "title": "remeras",
-    "price": "2000",
-    "quantity": "50",
-    "id": "4d4425c7007072941dd0891d"
-  },
-  {
-    "title": "remeras",
-    "price": "2000",
-    "quantity": "50",
-    "id": "a74107bf1c7f35c373256307"
-  },
-  {
-    "title": "remeras",
-    "price": "2000",
-    "quantity": "50",
-    "id": "4c245deef6e70d2f59ca8603"
-  },
-  {
-    "title": "Samsung A14",
-    "price": "273000",
-    "quantity": "50",
-    "id": "8623e4a0ed1bc65f46e83e5f",
-    "photo": "https://tienda.personal.com.ar/images/720/webp/Samsung_A14_Negro_R30_min_bab78f47a3.png",
-    "category": "Cell phone",
-    "stock": "5"
-  },
-  {
-    "title": "Samsung A14",
-    "price": "273000",
-    "quantity": "50",
-    "id": "e5dbebc7ec8c4fca26acc6ba",
-    "photo": "https://tienda.personal.com.ar/images/720/webp/Samsung_A14_Negro_R30_min_bab78f47a3.png",
-    "category": "Cell phone",
-    "stock": "5"
-  },
-  {
-    "title": "Samsung A14",
-    "price": "273000",
+    "title": "Samsung A54",
+    "photo": "./public/assets/img-products/a54.png",
+    "category": "accessories",
+    "price": "800000",
     "stock": "5",
-    "id": "c7efedfc954b5f2bdc002dda",
-    "photo": "https://tienda.personal.com.ar/images/720/webp/Samsung_A14_Negro_R30_min_bab78f47a3.png",
-    "category": "Cell phone"
+    "id": "d06a72a9470d388bc645a381"
   },
   {
-    "title": "Samsung A14",
-    "price": "273000",
+    "title": "Samsung A54",
+    "photo": "./public/assets/img-products/a54.png",
+    "category": "accessories",
+    "price": "800000",
     "stock": "5",
-    "id": "ca7bcf10164501f5962e63ae",
-    "photo": "https://tienda.personal.com.ar/images/720/webp/Samsung_A14_Negro_R30_min_bab78f47a3.png",
-    "category": "Cell phone"
+    "id": "4eeae0ffae96271ded97cff4"
+  },
+  {
+    "title": "Samsung A54",
+    "photo": "./public/assets/img-products/a54.png",
+    "category": "accessories",
+    "price": "800000",
+    "stock": "5",
+    "id": "34f49e18b9517a302b56774c"
+  },
+  {
+    "title": "Samsung A54",
+    "photo": "./public/assets/img-products/a54.png",
+    "category": "accessories",
+    "price": "800000",
+    "stock": "5",
+    "id": "a2d18aa224a7841ee3523014"
   }
 ]

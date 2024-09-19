@@ -1,65 +1,44 @@
 [
   {
-    "name": "Juan",
+    "photo": "./public/assets/img-users/Juan.png",
     "email": "Juan@mail.com",
     "password": "1234",
     "role": "admin",
     "id": "0cb5b56c8264adcec9e53bdc"
   },
   {
-    "name": "Pedro",
-    "email": "Pedro@mail.com",
-    "password": "1234",
-    "role": "user",
-    "id": "900db65ab8d097168c8e56de"
-  },
-  {
-    "name": "Jose",
-    "email": "Jose@mail.com",
-    "password": "1234",
-    "role": "user",
-    "id": "3701bbd3de4faa6935b9ba34"
-  },
-  {
-    "name": "Jose",
-    "email": "Jose@mail.com",
-    "password": "1234",
-    "role": "user",
-    "id": "f5063e45b03e9debe93582f8"
-  },
-  {
-    "name": "Jose",
-    "email": "Jose@mail.com",
-    "password": "1234",
-    "role": "user",
-    "id": "81091addb4ec4576caadbafa"
-  },
-  {
-    "name": "Jose",
-    "email": "Jose@mail.com",
-    "password": "1234",
-    "role": "user",
-    "id": "d7335eb1ae90e8d53d952b35"
-  },
-  {
-    "name": "Jose",
-    "email": "Jose@mail.com",
-    "password": "1234",
-    "role": "user",
-    "id": "99f4bfefbfd9ce49d3489ba9"
-  },
-  {
-    "name": "Jose",
+    "photo": "./public/assets/img-users/Jose.png",
     "email": "Jose@mail.com",
     "password": "1234",
     "role": "user",
     "id": "932d439f3cc822618be77aad"
   },
   {
-    "name": "Jose",
-    "email": "Jose@mail.com",
+    "photo": "./public/assets/img-users/Pedro.png",
+    "email": "Pedro@mail.com",
     "password": "1234",
     "role": "user",
-    "id": "22e70e41a578715a86e259ba"
+    "id": "b167e1485255926602e33906"
+  },
+  {
+    "photo": "./public/assets/img-users/Cristian.png",
+    "email": "Cristian@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "f2571a0e8bd01fbae6193789"
+  },
+  {
+    "photo": "./public/assets/img-users/Cristian.png",
+    "email": "Cristian@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "ea103e95610ca08e71f4cd80"
+  },
+  {
+    "photo": "./public/assets/img-users/Cristian.png",
+    "email": "Cristian@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "47254c08706d2c4af03ab190"
   }
 ]

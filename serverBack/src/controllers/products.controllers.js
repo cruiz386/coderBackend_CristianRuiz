@@ -1,13 +1,23 @@
-import productsManager from "../data/managers/products.manager.js";
+import productsFileManager from "../data/files/products.fileManager.js";
+import productsMemoryManager from "../data/memory/products.memoryManager.js";
+
+
+async function syncProductManagers() {
+  const productsFromFile = await productsFileManager.readAll();
+  productsMemoryManager.sync(productsFromFile);
+}
 
 async function getAllProducts(req, res, next) {
   try {
     let { category } = req.query;
+
+    await syncProductManagers();
+
     let response;
     if (!category) {
-      response = await productsManager.readAll();
+      response = await productsFileManager.readAll();
     } else {
-      response = await productsManager.readAll(category);
+      response = await productsFileManager.readAll(category);
     }
     if (response.length > 0) {
       return res.status(200).json({ message: "PRODUCTS READ", response });
@@ -24,7 +34,10 @@ async function getAllProducts(req, res, next) {
 async function getProductById(req, res, next) {
   try {
     const { pid } = req.params;
-    const product = await productsManager.readById(pid);
+
+    await syncProductManagers();
+
+    const product = await productsFileManager.readById(pid);
     return res.status(200).json({ statusCode: 200, response: product });
   } catch (error) {
     return next(error);
@@ -33,10 +46,11 @@ async function getProductById(req, res, next) {
 
 async function create(req, res, next) {
   try {
-    // const { title, price, quantity } = req.params;
     const data = req.body;
+    const product = await productsFileManager.create(data);
 
-    const product = await productsManager.create(data);
+    await syncProductManagers();
+
     return res.status(201).json({ statusCode: 201, response: product });
   } catch (error) {
     return next(error);
@@ -46,7 +60,10 @@ async function create(req, res, next) {
 async function destroyProduct(req, res, next) {
   try {
     const { pid } = req.params;
-    const product = await productsManager.destroy(pid);
+    const product = await productsFileManager.destroy(pid);
+
+    await syncProductManagers();
+
     return res.status(200).json({ statusCode: 200, response: product });
   } catch (error) {
     return next(error);
@@ -57,8 +74,10 @@ async function updateProduct(req, res, next) {
   try {
     const { pid } = req.params;
     const data = req.body;
-    //const { title, price, quantity } = req.body;
-    const product = await productsManager.update(pid, data);
+    const product = await productsFileManager.update(pid, data);
+
+    await syncProductManagers();
+
     return res.status(200).json({ statusCode: 200, response: product });
   } catch (error) {
     return next(error);
