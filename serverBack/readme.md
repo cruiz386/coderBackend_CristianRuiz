@@ -112,7 +112,7 @@ Each user has the following properties:
     
     ```bash
     npm install
-    ```
+     ```
 
 
 2. **Open the server in the browser:**
@@ -126,7 +126,8 @@ Each user has the following properties:
 - [Morgan](https://github.com/expressjs/morgan) for request logging.
 
 
-
+#### Clone repo: 
+git clone https://github.com/cruiz386/coderBackend_CristianRuiz.git
 
 
 

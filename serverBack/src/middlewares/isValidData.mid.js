@@ -1,7 +1,5 @@
 function isValidData(req, res, next) {
-    // como todo middleware depende de req y de res
-    // pero ademas necesita depender de next
-    // que es la funcion encargada de "pasar" a la siguiente función (de middleware o controlador)
+
     try {
         const { title, stock, price } = req.body;
         if (!title || typeof title !== 'string') {
