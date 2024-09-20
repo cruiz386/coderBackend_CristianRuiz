@@ -51,6 +51,7 @@ class ProductsManager {
       throw error;
     }
   }
+
   
 
   async create(data) {
