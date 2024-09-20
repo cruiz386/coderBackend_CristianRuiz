@@ -21,7 +21,7 @@ class ProductsManager {
     try {
       const data = await fs.promises.readFile(this.path, "utf-8");
       const parseData = JSON.parse(data);
-      //console.log(parseData);
+
       if (category) {
         const filteredData = parseData.filter(
           (each) => each.category === category
@@ -56,7 +56,7 @@ class ProductsManager {
 
   async create(data) {
     try {
-      data.id = crypto.randomBytes(12).toString("hex"); // Genera un ID único
+      data.id = crypto.randomBytes(12).toString("hex"); 
       const allProducts = await this.readAll();
       allProducts.push(data);
 

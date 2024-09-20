@@ -350,5 +350,13 @@
     "price": "1050000",
     "stock": "5",
     "id": "60656355d7aeeb504018aaf3"
+  },
+  {
+    "title": "Monitor Gamer Samsung Odissey",
+    "photo": "default_photo_url",
+    "category": "default",
+    "price": 1,
+    "stock": 1,
+    "id": "f6332d8d55fffa4a8f435aad"
   }
 ]

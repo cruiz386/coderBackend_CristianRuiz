@@ -35,10 +35,10 @@
     "id": "ea103e95610ca08e71f4cd80"
   },
   {
-    "photo": "./public/assets/img-users/Cristian.png",
-    "email": "Cristian@mail.com",
-    "password": "1234",
-    "role": "user",
-    "id": "47254c08706d2c4af03ab190"
+    "photo": "default_photo_url",
+    "email": "sdfsdf@asdasd.com",
+    "password": "321654",
+    "role": 0,
+    "id": "f5c2b5f1f3beaeddff14cff7"
   }
 ]

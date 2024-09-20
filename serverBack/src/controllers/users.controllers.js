@@ -31,19 +31,13 @@ class UserController {
   async createUser(req, res, next) {
     try {
       const data = req.body;
-      const { email, password } = data;
-      if (!email || !password) {
-        const error = new Error("email and password are required");
-        error.statusCode = 400;
-        throw error;
-      }
       const userId = await usersFileManager.create(data);
 
       await syncUserManagers();
 
       return res
         .status(201)
-        .json({ message: `user created with id ${userId}` });
+        .json({ message: `User created with id ${userId}` });
     } catch (error) {
       return next(error);
     }
