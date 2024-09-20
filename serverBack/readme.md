@@ -1,4 +1,3 @@
-<<<<<<<<<<<<<<  ✨ Codeium Command 🌟  >>>>>>>>>>>>>>>>
 # Product and User Management API
 
 This project implements a RESTful API for managing products and users, allowing data to be stored in memory and files. It features basic CRUD operations with error handling and request logging.
@@ -108,15 +107,35 @@ Each user has the following properties:
     - `{ response: Object }`
 
 ## How to Run the API
-## How to Test the API
 
 1. **Install dependencies:**
-   
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd <repository-directory>
-<<<<<<<  495b0a91-3d00-45aa-a1af-0ad4ea5508b0  >>>>>>>
+    
+    ```bash
+    npm install
+    ```
+
+
+2. **Open the server in the browser:**
+
+    ```bash
+    npm run dev
+    ```
+
+## Additional Resources 
+
+- [Morgan](https://github.com/expressjs/morgan) for request logging.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
