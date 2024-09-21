@@ -1,12 +1,21 @@
-import usersManager from "../data/managers/users.fs.js";
+import usersFileManager from "../data/files/users.fileManager.js";
+import usersMemoryManager from "../data/memory/users.memoryManager.js";
+
+async function syncUserManagers() {
+  const usersFromFile = await usersFileManager.readAll();
+  usersMemoryManager.sync(usersFromFile);
+}
 
 class UserController {
   constructor() {}
 
-  async readUsers(req, res) {
+  async readUsers(req, res, next) {
     try {
       const { role } = req.query;
-      const data = await usersManager.readAll(role);
+
+      await syncUserManagers();
+
+      const data = await usersFileManager.readAll(role);
       if (data.length > 0) {
         return res.status(200).json({ data, message: "users fetched" });
       } else {
@@ -15,75 +24,65 @@ class UserController {
         throw error;
       }
     } catch (error) {
-      console.log(error);
-      return res
-        .status(error.statusCode || 500)
-        .json({ message: error.message || "API ERROR" });
+      return next(error);
     }
   }
 
-  async createUser(req, res) {
+  async createUser(req, res, next) {
     try {
       const data = req.body;
-      const { email, password } = data;
-      if (!email || !password) {
-        const error = new Error("email and password are required");
-        error.statusCode = 400;
-        throw error;
-      }
-      const userId = await usersManager.create(data);
+      const userId = await usersFileManager.create(data);
+
+      await syncUserManagers();
+
       return res
         .status(201)
-        .json({ message: `user created with id ${userId}` });
+        .json({ message: `User created with id ${userId}` });
     } catch (error) {
-      console.log(error);
-      return res
-        .status(error.statusCode || 500)
-        .json({ message: error.message || "API ERROR" });
+      return next(error);
     }
   }
 
-  
-async  deleteUser(req, res) {
+  async deleteUser(req, res, next) {
     try {
       const { uid } = req.params;
-      const user = await usersManager.destroy(uid);
+      const user = await usersFileManager.destroy(uid);
+
+      await syncUserManagers();
+
       return res.status(200).json({ statusCode: 200, response: user });
     } catch (error) {
-      const { statusCode, message } = error;
-      return res
-        .status(statusCode || 500)
-        .json({ message: message || "FATAL ERROR" });
+      return next(error);
     }
   }
 
-  async  getUserById(req, res) {
+  async readUserById(req, res, next) {
     try {
       const { uid } = req.params;
-      const user = await usersManager.readById(uid);
+
+      await syncUserManagers();
+
+      const user = await usersFileManager.readById(uid);
       return res.status(200).json({ statusCode: 200, response: user });
     } catch (error) {
-      const { statusCode, message } = error;
-      return res
-        .status(statusCode || 500)
-        .json({ message: message || "FATAL ERROR" });
+      return next(error);
     }
-  } 
-  
- async  updateUser(req, res) {
+  }
+
+  async updateUser(req, res, next) {
     try {
       const { uid } = req.params;
       const data = req.body;
-      const user = await usersManager.update(uid, data);
+
+      const user = await usersFileManager.update(uid, data);
+
+      await syncUserManagers();
+
       return res.status(200).json({ statusCode: 200, response: user });
     } catch (error) {
-      const { statusCode, message } = error;
-      return res
-        .status(statusCode || 500)
-        .json({ message: message || "FATAL ERROR" });
+      return next(error);
     }
   }
-
 }
 
 const userController = new UserController();

@@ -1,23 +1,33 @@
 import express from "express";
-import productsManager from "./src/data/managers/products.fs.js";
-import userController from "./src/controllers/users.controllers.js";
-import { create, destroyProduct, getAllProducts, getProductById, updateProduct } from "./src/controllers/products.controllers.js";
-import router from './src/routers/index.router.js'
+import morgan from "morgan";
+import cors from "cors";
+import { engine } from "express-handlebars";
+import router from "./src/routers/index.router.js";
+import errorHandler from "./src/middlewares/errorHandler.mid.js";
+import pathHandler from "./src/middlewares/pathHandler.mid.js";
+import __dirname from "./utils.js";
 
 try {
   const server = express();
   const PORT = 8080;
   const ready = () => console.log("server ready on port " + PORT);
-
-  server.use(express.json());
-  server.use(express.urlencoded({ extended: true })); // Para manejar JSON en las solicitudes
-  server.use('/',router); // ruta principal 
   server.listen(PORT, ready);
+
+  server.use(morgan("dev"));
+  server.use(express.urlencoded({ extended: true }));
+  server.use(express.json());
+
+  server.use(cors());
+  server.use("/public", express.static("public"))
+
+  server.engine("handlebars", engine());
+  server.set("view engine", "handlebars");
+  server.set("views", __dirname + "/src/views");
+
+  server.use( router)
+  server.use(errorHandler);
+  server.use(pathHandler);
 
 } catch (error) {
   console.log(error);
 }
-
-
-
-

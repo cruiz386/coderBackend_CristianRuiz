@@ -1,0 +1,16 @@
+<h2 class="text-center p-5">Products in Category: {{category}}</h2>
+<section class="d-flex flex-wrap justify-content-center">
+  {{#each products}}
+    <div class="card m-3" style="width: 18rem;">
+      <img src="{{this.photo}}" class="card-img-top" alt="{{this.title}}">
+      <div class="card-body ">
+        <h5 class="card-title text-center my-3 ">{{this.title}}</h5>
+        <p class="card-text text-center my-3 ">{{this.category}}</p>
+        <h6 class="text-success text-center my-3  ">Price: ${{this.price}}</h6>
+        <a href="/products/{{this.id}}" class="btn btn-outline-primary d-block mx-auto my-3 w-50 ">+ Info</a>
+      </div>
+    </div>
+  {{else}}
+    <p class="text-center">No products found in this category.</p>
+  {{/each}}
+</section>
