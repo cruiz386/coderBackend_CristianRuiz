@@ -8,32 +8,32 @@
     "id": "d06a72a9470d388bc645a381"
   },
   {
-    "title": "Samsung A54",
-    "photo": "/public/assets/img-products/Samsung_A54.webp",
+    "title": "Samsung A05",
+    "photo": "/public/assets/img-products/Samsung_A05.png",
     "category": "phones",
-    "price": "800000",
+    "price": "205000",
     "stock": "5",
     "id": "4eeae0ffae96271ded97cff4"
   },
   {
-    "title": "Samsung A54",
-    "photo": "/public/assets/img-products/Samsung_A54.webp",
+    "title": "Motorola G24",
+    "photo": "/public/assets/img-products/Motorola_G24.png",
     "category": "phones",
-    "price": "800000",
+    "price": "315000",
     "stock": "5",
     "id": "34f49e18b9517a302b56774c"
   },
   {
-    "title": "Samsung A54",
-    "photo": "/public/assets/img-products/Samsung_A54.webp",
+    "title": "Samsung A25",
+    "photo": "/public/assets/img-products/Samsung_A25.png",
     "category": "phones",
-    "price": "800000",
+    "price": "530000",
     "stock": "5",
     "id": "a2d18aa224a7841ee3523014"
   },
   {
     "title": "Cargador Xiaomi",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Cargador_Xiaomi.png",
     "category": "accessories",
     "price": "26000",
     "stock": "5",
@@ -41,7 +41,7 @@
   },
   {
     "title": "Smartwatch Foxbox",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Smartwatch_Foxbox.png",
     "category": "accessories",
     "price": "48000",
     "stock": "5",
@@ -49,7 +49,7 @@
   },
   {
     "title": "Auriculares Bluetooth Motorola",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Auriculares_Motorola.png",
     "category": "accessories",
     "price": "72000",
     "stock": "5",
@@ -57,7 +57,7 @@
   },
   {
     "title": "Auriculares Samsung Galaxy Buds2",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Samsung_Buds2.png",
     "category": "accessories",
     "price": "183000",
     "stock": "5",
@@ -65,7 +65,7 @@
   },
   {
     "title": "Parlante Bluetooth Xiaomi",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Parlante_Xiaomi.png",
     "category": "accessories",
     "price": "28000",
     "stock": "5",
@@ -73,7 +73,7 @@
   },
   {
     "title": "Mouse VSG Aquila Air",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Mouse_Aquila.png",
     "category": "gaming",
     "price": "49700",
     "stock": "5",
@@ -81,7 +81,7 @@
   },
   {
     "title": "Consola Xbox Series S 1TB",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Xbox_1TB.png",
     "category": "gaming",
     "price": "1050000",
     "stock": "5",
@@ -89,7 +89,7 @@
   },
   {
     "title": "Monitor Gamer Samsung Odissey",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Monitor_Odyssey.png",
     "category": "gaming",
     "price": "900000",
     "stock": "5",
@@ -97,7 +97,7 @@
   },
   {
     "title": "Samsung Galaxy Book3",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Galaxy_Book3.png",
     "category": "tablets-notebooks",
     "price": "2160000",
     "stock": "2",
@@ -105,7 +105,7 @@
   },
   {
     "title": "Tablet TCL Nxt Paper 11",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Tablet_TCL.png",
     "category": "tablets-notebooks",
     "price": "420000",
     "stock": "2",
@@ -113,7 +113,7 @@
   },
   {
     "title": "Tablet Samsung Galaxy Tab A9",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Galaxy_Tab_A9.png",
     "category": "tablets-notebooks",
     "price": "350000",
     "stock": "2",
@@ -121,7 +121,7 @@
   },
   {
     "title": "Smart TV 55 Samsung 4K",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "/public/assets/img-products/Smart_TV_55_Samsung.png",
     "category": "tv-smart",
     "price": "738000",
     "stock": "2",
@@ -353,7 +353,7 @@
   },
   {
     "title": "Monitor Gamer Samsung Odissey",
-    "photo": "default_photo_url",
+    "photo": "/public/assets/img-products/img_default.png",
     "category": "default",
     "price": 1,
     "stock": 1,

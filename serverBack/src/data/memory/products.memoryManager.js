@@ -1,52 +1,10 @@
-class ProductsMemoryManager {
-  constructor() {
-    this.products = [];
-  }
+let products = []; // Contiene todos los productos
 
-
-  readAll(category) {
-    if (category) {
-      return this.products.filter((product) => product.category === category);
-    }
-    return this.products;
-  }
-
-
-  readById(id) {
-    return this.products.find((product) => product.id === id);
-  }
-
-
-  create(data) {
-    this.products.push(data);
-    return data;
-  }
-
-
-  update(id, newData) {
-    const index = this.products.findIndex((product) => product.id === id);
-    if (index !== -1) {
-      this.products[index] = { ...this.products[index], ...newData };
-      return this.products[index];
-    }
-    return null;
-  }
-
-
-  destroy(id) {
-    const index = this.products.findIndex((product) => product.id === id);
-    if (index !== -1) {
-      return this.products.splice(index, 1);
-    }
-    return null;
-  }
-
-
-
-  sync(data) {
-    this.products = data;
-  }
+function sync(data) {
+  products = data; // Sincroniza los productos en memoria
+  console.log("products memory manager sync", products);
+  
 }
-
-const productsMemoryManager = new ProductsMemoryManager();
-export default productsMemoryManager;
+export default {
+  sync
+};

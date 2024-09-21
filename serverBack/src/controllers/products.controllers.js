@@ -3,7 +3,7 @@ import productsMemoryManager from "../data/memory/products.memoryManager.js";
 
 
 
-async function syncProductManagers() {
+async function syncProductManagers() { 
   const productsFromFile = await productsFileManager.readAll();
   productsMemoryManager.sync(productsFromFile);
 }

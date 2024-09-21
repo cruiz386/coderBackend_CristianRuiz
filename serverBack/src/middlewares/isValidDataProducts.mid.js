@@ -18,7 +18,7 @@ function isValidDataProduct(req, res, next) {
       req.body.category = "default"; // Valor por defecto
     }
     if (!photo) {
-      req.body.photo = "default_photo_url"; // Valor por defecto
+      req.body.photo = "/public/assets/img-products/img_default.png"; // Valor por defecto
     }
 
     return next();
