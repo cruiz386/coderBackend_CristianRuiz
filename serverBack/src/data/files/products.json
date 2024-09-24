@@ -1,38 +1,362 @@
 [
   {
-    "title": "remeras",
-    "price": "2000",
-    "quantity": "50",
-    "id": "4d4425c7007072941dd0891d"
+    "title": "Samsung A54",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "phones",
+    "price": "800000",
+    "stock": "5",
+    "id": "d06a72a9470d388bc645a381"
   },
   {
-    "title": "remeras",
-    "price": "2000",
-    "quantity": "50",
-    "id": "a74107bf1c7f35c373256307"
+    "title": "Samsung A05",
+    "photo": "/public/assets/img-products/Samsung_A05.png",
+    "category": "phones",
+    "price": "205000",
+    "stock": "5",
+    "id": "4eeae0ffae96271ded97cff4"
   },
   {
-    "title": "remeras",
-    "price": "2000",
-    "quantity": "50",
-    "id": "4c245deef6e70d2f59ca8603"
+    "title": "Motorola G24",
+    "photo": "/public/assets/img-products/Motorola_G24.png",
+    "category": "phones",
+    "price": "315000",
+    "stock": "5",
+    "id": "34f49e18b9517a302b56774c"
   },
   {
-    "title": "Pantalones",
-    "price": "2000",
-    "quantity": "50",
-    "id": "8623e4a0ed1bc65f46e83e5f"
+    "title": "Samsung A25",
+    "photo": "/public/assets/img-products/Samsung_A25.png",
+    "category": "phones",
+    "price": "530000",
+    "stock": "5",
+    "id": "a2d18aa224a7841ee3523014"
   },
   {
-    "title": "Pantalones",
-    "price": "2000",
-    "quantity": "50",
-    "id": "e5dbebc7ec8c4fca26acc6ba"
+    "title": "Cargador Xiaomi",
+    "photo": "/public/assets/img-products/Cargador_Xiaomi.png",
+    "category": "accessories",
+    "price": "26000",
+    "stock": "5",
+    "id": "d238ca68c0377fdb637e6bd4"
   },
   {
-    "title": "Pantalones",
-    "price": "2000",
-    "quantity": "50",
-    "id": "c779eb8c919bb437782f787a"
+    "title": "Smartwatch Foxbox",
+    "photo": "/public/assets/img-products/Smartwatch_Foxbox.png",
+    "category": "accessories",
+    "price": "48000",
+    "stock": "5",
+    "id": "851a5752b5eba49cab899ae6"
+  },
+  {
+    "title": "Auriculares Bluetooth Motorola",
+    "photo": "/public/assets/img-products/Auriculares_Motorola.png",
+    "category": "accessories",
+    "price": "72000",
+    "stock": "5",
+    "id": "62ccbfecbcdf3f3fe960964a"
+  },
+  {
+    "title": "Auriculares Samsung Galaxy Buds2",
+    "photo": "/public/assets/img-products/Samsung_Buds2.png",
+    "category": "accessories",
+    "price": "183000",
+    "stock": "5",
+    "id": "73e077ee2f352cfc9418db59"
+  },
+  {
+    "title": "Parlante Bluetooth Xiaomi",
+    "photo": "/public/assets/img-products/Parlante_Xiaomi.png",
+    "category": "accessories",
+    "price": "28000",
+    "stock": "5",
+    "id": "83aaf5dc6f1f684e0c303ad8"
+  },
+  {
+    "title": "Mouse VSG Aquila Air",
+    "photo": "/public/assets/img-products/Mouse_Aquila.png",
+    "category": "gaming",
+    "price": "49700",
+    "stock": "5",
+    "id": "afafe2239ee75fb0da493816"
+  },
+  {
+    "title": "Consola Xbox Series S 1TB",
+    "photo": "/public/assets/img-products/Xbox_1TB.png",
+    "category": "gaming",
+    "price": "1050000",
+    "stock": "5",
+    "id": "1894313c5a450a8551df89dc"
+  },
+  {
+    "title": "Monitor Gamer Samsung Odissey",
+    "photo": "/public/assets/img-products/Monitor_Odyssey.png",
+    "category": "gaming",
+    "price": "900000",
+    "stock": "5",
+    "id": "ef6a8d89f97e481d9ef9b92f"
+  },
+  {
+    "title": "Samsung Galaxy Book3",
+    "photo": "/public/assets/img-products/Galaxy_Book3.png",
+    "category": "tablets-notebooks",
+    "price": "2160000",
+    "stock": "2",
+    "id": "8fef971d561d61e87b91710a"
+  },
+  {
+    "title": "Tablet TCL Nxt Paper 11",
+    "photo": "/public/assets/img-products/Tablet_TCL.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "5f9dc858d615911911bdc473"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Galaxy_Tab_A9.png",
+    "category": "tablets-notebooks",
+    "price": "350000",
+    "stock": "2",
+    "id": "c3c3b3303b4be4668d214131"
+  },
+  {
+    "title": "Smart TV 55 Samsung 4K",
+    "photo": "/public/assets/img-products/Smart_TV_55_Samsung.png",
+    "category": "tv-smart",
+    "price": "738000",
+    "stock": "2",
+    "id": "a78367fadc0c17c8b28d64a7"
+  },
+  {
+    "title": "Smart TV 32 TCL",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tv-smart",
+    "price": "320000",
+    "stock": "2",
+    "id": "bf6187e6d9dfc17c519335ed"
+  },
+  {
+    "title": "Smart TV 32 TCL",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tv-smart",
+    "price": "320000",
+    "stock": "2",
+    "id": "5a0811ff8b97ec121ee0354a"
+  },
+  {
+    "title": "Smart TV 32 TCL",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tv-smart",
+    "price": "320000",
+    "stock": "2",
+    "id": "524709d615d7b95ea3769526"
+  },
+  {
+    "title": "Smart TV 32 TCL",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tv-smart",
+    "price": "320000",
+    "stock": "2",
+    "id": "551f6aa36a2c1be6948ee57a"
+  },
+  {
+    "title": "Smart TV 32 TCL",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tv-smart",
+    "price": "320000",
+    "stock": "2",
+    "id": "4e260515ca7b69332ca5c22f"
+  },
+  {
+    "title": "Smart TV 32 TCL",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tv-smart",
+    "price": "320000",
+    "stock": "2",
+    "id": "3191eb919abd827cd7b99f7f"
+  },
+  {
+    "title": "Smart TV 32 TCL",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tv-smart",
+    "price": "320000",
+    "stock": "2",
+    "id": "ff87aa12986d7258a629a21b"
+  },
+  {
+    "title": "Smart TV 32 TCL",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tv-smart",
+    "price": "320000",
+    "stock": "2",
+    "id": "9983702191d29c2b87f632db"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "abfefa9d4d6003224f6e0764"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "d60c5478e53db97abfae0859"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "5cf8de54df3581dc962c0e8a"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "11c3a925f454b0e3016cfee3"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "0e7816426f0f79d8f111ad7e"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "d91151bfebb8ed3b29bb1964"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "5990e07461301f0638dbdd9f"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "e948b6cba71934ae721b9a62"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "4b63c4ff9ebd69c7e4cbc03f"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "2389099905216fa1798a6308"
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab A9",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "420000",
+    "stock": "2",
+    "id": "71be36172eef6adfa95edae1"
+  },
+  {
+    "title": "Samsung Galaxy Book3",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "900000",
+    "stock": "5",
+    "id": "4211d77491becf491eb08560"
+  },
+  {
+    "title": "Samsung Galaxy Book3",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "900000",
+    "stock": "5",
+    "id": "39fc2fce9478081469a49ac9"
+  },
+  {
+    "title": "Samsung Galaxy Book3",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "tablets-notebooks",
+    "price": "900000",
+    "stock": "5",
+    "id": "eb98b0d824c1736e88e0ee9c"
+  },
+  {
+    "title": "Monitor Gamer Samsung Odissey",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "gaming",
+    "price": "1050000",
+    "stock": "5",
+    "id": "2bc6c6b143bd3a635712644f"
+  },
+  {
+    "title": "Monitor Gamer Samsung Odissey",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "gaming",
+    "price": "1050000",
+    "stock": "5",
+    "id": "40b5471319e563753ec8af85"
+  },
+  {
+    "title": "Monitor Gamer Samsung Odissey",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "gaming",
+    "price": "1050000",
+    "stock": "5",
+    "id": "c28441dfbf373155b73de1a3"
+  },
+  {
+    "title": "Monitor Gamer Samsung Odissey",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "gaming",
+    "price": "1050000",
+    "stock": "5",
+    "id": "193d2a3a461f8921756cfdcd"
+  },
+  {
+    "title": "Monitor Gamer Samsung Odissey",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "gaming",
+    "price": "1050000",
+    "stock": "5",
+    "id": "45e33c1c6b45bc3bf1e747c9"
+  },
+  {
+    "title": "Monitor Gamer Samsung Odissey",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "gaming",
+    "price": "1050000",
+    "stock": "5",
+    "id": "60656355d7aeeb504018aaf3"
+  },
+  {
+    "title": "Monitor Gamer Samsung Odissey",
+    "photo": "/public/assets/img-products/img_default.png",
+    "category": "default",
+    "price": 1,
+    "stock": 1,
+    "id": "f6332d8d55fffa4a8f435aad"
   }
 ]

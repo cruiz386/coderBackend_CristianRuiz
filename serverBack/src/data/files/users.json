@@ -1,37 +1,44 @@
 [
   {
-    "name": "Juan",
+    "photo": "./public/assets/img-users/Juan.png",
     "email": "Juan@mail.com",
     "password": "1234",
     "role": "admin",
     "id": "0cb5b56c8264adcec9e53bdc"
   },
   {
-    "name": "Pedro",
+    "photo": "./public/assets/img-users/Jose.png",
+    "email": "Jose@mail.com",
+    "password": "1234",
+    "role": "user",
+    "id": "932d439f3cc822618be77aad"
+  },
+  {
+    "photo": "./public/assets/img-users/Pedro.png",
     "email": "Pedro@mail.com",
     "password": "1234",
     "role": "user",
-    "id": "900db65ab8d097168c8e56de"
+    "id": "b167e1485255926602e33906"
   },
   {
-    "name": "Jose",
-    "email": "Jose@mail.com",
+    "photo": "./public/assets/img-users/Cristian.png",
+    "email": "Cristian@mail.com",
     "password": "1234",
     "role": "user",
-    "id": "3701bbd3de4faa6935b9ba34"
+    "id": "f2571a0e8bd01fbae6193789"
   },
   {
-    "name": "Jose",
-    "email": "Jose@mail.com",
+    "photo": "./public/assets/img-users/Cristian.png",
+    "email": "Cristian@mail.com",
     "password": "1234",
     "role": "user",
-    "id": "f5063e45b03e9debe93582f8"
+    "id": "ea103e95610ca08e71f4cd80"
   },
   {
-    "name": "Jose",
-    "email": "Jose@mail.com",
-    "password": "1234",
-    "role": "user",
-    "id": "81091addb4ec4576caadbafa"
+    "photo": "default_photo_url",
+    "email": "sdfsdf@asdasd.com",
+    "password": "321654",
+    "role": 0,
+    "id": "f5c2b5f1f3beaeddff14cff7"
   }
 ]

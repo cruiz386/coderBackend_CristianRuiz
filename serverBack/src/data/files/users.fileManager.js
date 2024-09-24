@@ -2,31 +2,49 @@ import fs from "fs";
 import crypto from "crypto";
 
 class UsersManager {
-  constructor() {
-    this.path = "./src/data/files/users.json";
-    this.init();
+  constructor(path) {
+    this.path = path;
+    this.exists();
   }
 
-  init() {
-    const fileExists = fs.existsSync(this.path);
-    if (fileExists) {
-      console.log("file already exists");
-    } else {
+  exists() {
+    const exist = fs.existsSync(this.path);
+    if (!exist) {
       fs.writeFileSync(this.path, JSON.stringify([]));
-      console.log("file created");
+      console.log("File created");
+    } else {
+      console.log("File already exists");
     }
   }
 
   async readAll(role) {
     try {
       const data = await fs.promises.readFile(this.path, "utf-8");
-      const parsedData = JSON.parse(data);
+      const parseData = JSON.parse(data);
       if (role) {
-        const filteredData = parsedData.filter((each) => each.role === role);
+        const filteredData = parseData.filter((user) => user.role === role);
         return filteredData;
+      } else {
+        return parseData;
       }
-      return parsedData;
     } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  async readById(id) {
+    try {
+      const allUsers = await this.readAll();
+      const user = allUsers.find((user) => user.id === id.toString());
+      if (!user) {
+        const error = new Error("User not found");
+        error.statusCode = 404;
+        throw error;
+      }
+      return user;
+    } catch (error) {
+      console.log(error);
       throw error;
     }
   }
@@ -36,10 +54,12 @@ class UsersManager {
       userData.id = crypto.randomBytes(12).toString("hex");
       const allUsers = await this.readAll();
       allUsers.push(userData);
+
       const stringData = JSON.stringify(allUsers, null, 2);
       await fs.promises.writeFile(this.path, stringData);
       return userData.id;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   }
@@ -57,19 +77,19 @@ class UsersManager {
       return allUsers[index];
     } catch (error) {
       console.log(error);
-      //throw error;
+      throw error;
     }
   }
 
   async destroy(id) {
     try {
       if (!id) {
-        throw new Error("User ID is required");
+        return null;
       }
       const allUsers = await this.readAll();
       const index = allUsers.findIndex((user) => user.id === id.toString());
       if (index === -1) {
-        throw new Error("User not found");
+        return null;
       }
       allUsers.splice(index, 1);
       const stringAll = JSON.stringify(allUsers, null, 2);
@@ -77,10 +97,10 @@ class UsersManager {
       return id;
     } catch (error) {
       console.log(error);
-      //throw error;
+      throw error;
     }
   }
 }
 
-const usersManager = new UsersManager();
-export default usersManager;
+const usersFileManager = new UsersManager("./src/data/files/users.json");
+export default usersFileManager;
