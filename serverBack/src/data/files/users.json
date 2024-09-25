@@ -14,13 +14,6 @@
     "id": "932d439f3cc822618be77aad"
   },
   {
-    "photo": "./public/assets/img-users/Pedro.png",
-    "email": "Pedro@mail.com",
-    "password": "1234",
-    "role": "user",
-    "id": "b167e1485255926602e33906"
-  },
-  {
     "photo": "./public/assets/img-users/Cristian.png",
     "email": "Cristian@mail.com",
     "password": "1234",
@@ -28,9 +21,9 @@
     "id": "f2571a0e8bd01fbae6193789"
   },
   {
-    "photo": "./public/assets/img-users/Cristian.png",
-    "email": "Cristian@mail.com",
-    "password": "1234",
+    "photo": "/public/assets/img-users/usuarioPrueba.png",
+    "email": "usuarioPrueba@mail.com",
+    "password": "12345",
     "role": "user",
     "id": "ea103e95610ca08e71f4cd80"
   },
