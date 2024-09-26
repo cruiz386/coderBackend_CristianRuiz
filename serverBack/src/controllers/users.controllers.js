@@ -7,7 +7,7 @@ async function syncUserManagers() {
 }
 
 class UserController {
-  constructor() {}
+  constructor() { }
 
   async readUsers(req, res, next) {
     try {
@@ -83,7 +83,20 @@ class UserController {
       return next(error);
     }
   }
+
+ 
+
+}
+
+const registerView = async (req, res, next) => {
+  try {
+    const users = await usersFileManager.readAll()
+    return res.render("register", {users})
+  } catch (error) {
+    next(error);
+  }
 }
 
 const userController = new UserController();
-export default userController;
+export default   userController;
+export {registerView};

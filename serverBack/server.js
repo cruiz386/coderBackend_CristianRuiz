@@ -8,7 +8,7 @@ import router from "./src/routers/index.router.js";
 import errorHandler from "./src/middlewares/errorHandler.mid.js";
 import pathHandler from "./src/middlewares/pathHandler.mid.js";
 import __dirname from "./utils.js";
-
+import socketCb from "./src/routers/index.socket.js";
 
 try {
   const server = express();
@@ -17,12 +17,11 @@ try {
   const httpServer = createServer(server);
   const tcpServer = new Server(httpServer);
 
-  tcpServer.on("connection", (socket) =>
-  console.log(`client ${socket.id} connected`)
-);
+  tcpServer.on("connection", socketCb
+  );
 
 
-  server.listen(PORT, ready);
+  httpServer.listen(PORT, ready);
 
   server.use(morgan("dev"));
   server.use(express.urlencoded({ extended: true }));
