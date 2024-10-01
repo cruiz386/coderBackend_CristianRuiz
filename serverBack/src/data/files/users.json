@@ -14,13 +14,6 @@
     "id": "932d439f3cc822618be77aad"
   },
   {
-    "photo": "./public/assets/img-users/Pedro.png",
-    "email": "Pedro@mail.com",
-    "password": "1234",
-    "role": "user",
-    "id": "b167e1485255926602e33906"
-  },
-  {
     "photo": "./public/assets/img-users/Cristian.png",
     "email": "Cristian@mail.com",
     "password": "1234",
@@ -28,9 +21,9 @@
     "id": "f2571a0e8bd01fbae6193789"
   },
   {
-    "photo": "./public/assets/img-users/Cristian.png",
-    "email": "Cristian@mail.com",
-    "password": "1234",
+    "photo": "/public/assets/img-users/usuarioPrueba.png",
+    "email": "usuarioPrueba@mail.com",
+    "password": "12345",
     "role": "user",
     "id": "ea103e95610ca08e71f4cd80"
   },
@@ -40,5 +33,89 @@
     "password": "321654",
     "role": 0,
     "id": "f5c2b5f1f3beaeddff14cff7"
+  },
+  {
+    "name": "Nombre",
+    "email": "Nombre@mail",
+    "password": "123456",
+    "photo": "photo",
+    "id": "bddc30d8039e7bc8206ccc76"
+  },
+  {
+    "name": "",
+    "email": "",
+    "password": "",
+    "photo": "",
+    "id": "91e1fc633963b5a353be603d"
+  },
+  {
+    "name": "",
+    "email": "",
+    "password": "",
+    "photo": "",
+    "id": "b78a09260cf1130480106b26"
+  },
+  {
+    "name": "",
+    "email": "",
+    "password": "",
+    "photo": "",
+    "id": "ad39d6c485f0f52a167de60b"
+  },
+  {
+    "name": "sdfasdf",
+    "email": "asdf",
+    "password": "asdf",
+    "photo": "asdf",
+    "id": "45f69b092d59a4afbfe142e8"
+  },
+  {
+    "name": "sdfasdf",
+    "email": "asdf",
+    "password": "asdf",
+    "photo": "asdf",
+    "id": "9989034b7296cc68948736d3"
+  },
+  {
+    "name": "sdfasdf",
+    "email": "asdf",
+    "password": "asdf",
+    "photo": "asdf",
+    "id": "161ef0613d6538ae07b31ba4"
+  },
+  {
+    "name": "sdfasdf",
+    "email": "asdf",
+    "password": "asdf",
+    "photo": "asdf",
+    "id": "fc036ba88ca7808101587fd2"
+  },
+  {
+    "name": "sdfasdf",
+    "email": "asdf",
+    "password": "asdf",
+    "photo": "asdf",
+    "id": "77257dcafe3bd96f69ccd3db"
+  },
+  {
+    "name": "",
+    "email": "",
+    "password": "",
+    "photo": "",
+    "id": "d0c0ce02dfa277654b4b9bfc"
+  },
+  {
+    "name": "sdf",
+    "email": "sdf",
+    "password": "sdf",
+    "photo": "dsf",
+    "id": "2b50cfd3c91d82c546f0ef83"
+  },
+  {
+    "name": "pepe",
+    "email": "pepe@mail",
+    "password": "321654",
+    "photo": "photo",
+    "id": "270da6831699c860074e46cd"
   }
 ]
