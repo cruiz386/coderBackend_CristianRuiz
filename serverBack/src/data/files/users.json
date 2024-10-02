@@ -131,5 +131,12 @@
     "password": "321654",
     "photo": "photo",
     "id": "527c8b37a964fd3295366541"
+  },
+  {
+    "name": "user",
+    "email": "cruiz@teco.com.ar",
+    "password": "123456",
+    "photo": "photo",
+    "id": "4069a2710dc8a4f7bab7f10d"
   }
 ]

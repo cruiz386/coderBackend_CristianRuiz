@@ -10,6 +10,7 @@ const socketCb = (socket) => {
     socket.emit("update user", allUsers);
   });
 
+  
   socket.on("add product", async (productData) => {
     await productsFileManager.create(productData);
     const allProducts = await productsFileManager.readAll();

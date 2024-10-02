@@ -16,14 +16,6 @@
     "id": "34f49e18b9517a302b56774c"
   },
   {
-    "title": "Samsung A25",
-    "photo": "/public/assets/img-products/Samsung_A25.png",
-    "category": "phones",
-    "price": "530000",
-    "stock": "8",
-    "id": "a2d18aa224a7841ee3523014"
-  },
-  {
     "title": "Cargador Xiaomi",
     "photo": "/public/assets/img-products/Cargador_Xiaomi.png",
     "category": "accessories",
@@ -161,10 +153,10 @@
   },
   {
     "title": "Tablet Samsung Galaxy Tab A9",
-    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "photo": "photo",
     "category": "tablets-notebooks",
     "price": "420000",
-    "stock": "2",
+    "stock": "7",
     "id": "d60c5478e53db97abfae0859"
   },
   {
