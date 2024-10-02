@@ -117,5 +117,19 @@
     "password": "321654",
     "photo": "photo",
     "id": "270da6831699c860074e46cd"
+  },
+  {
+    "name": "CRISTIAN",
+    "email": "testQA@teco.com.ar",
+    "password": "12345",
+    "photo": "photo",
+    "id": "c797431938933e67b15c221a"
+  },
+  {
+    "name": "CRISTIAN",
+    "email": "cruiz@teco.com.ar",
+    "password": "321654",
+    "photo": "photo",
+    "id": "527c8b37a964fd3295366541"
   }
 ]

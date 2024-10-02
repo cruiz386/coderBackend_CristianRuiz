@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Products</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/socket.js" defer></script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Admin Products</h1>
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Photo</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                {{#each products}}
+                <tr id="product-{{this.id}}">
+                    <td>{{this.id}}</td>
+                    <td>{{this.title}}</td>
+                    <td><img src="{{this.photo}}" alt="{{this.title}}" style="width: 50px; height: auto;"></td>
+                    <td>{{this.category}}</td>
+                    <td>${{this.price}}</td>
+                    <td>{{this.stock}}</td>
+                    <td>
+                        <a href="#" class="btn btn-danger delete-product" data-id="{{this.id}}">Delete</a>
+                        <a href="#" class="btn btn-warning update-product" data-id="{{this.id}}">Update</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <h2 class="mt-5">Update Product</h2>
+        <form id="update-product-form" style="display: none;">
+            <input type="hidden" id="update-id" name="id" />
+            <div class="form-group">
+                <input type="text" id="update-title" class="form-control" name="title" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="update-photo" class="form-control" name="photo" placeholder="URL photo" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="update-category" class="form-control" name="category" placeholder="Category"
+                    required>
+            </div>
+            <div class="form-group">
+                <input type="number" id="update-price" class="form-control" name="price" placeholder="Price" required>
+            </div>
+            <div class="form-group">
+                <input type="number" id="update-stock" class="form-control" name="stock" placeholder="Stock" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+
+        <h2 class="mt-5">Filter</h2>
+        <div class="form-inline mb-4">
+            <input type="text" id="search-pid" class="form-control mr-2" placeholder="Filter by ID" />
+            <input type="text" id="search-category" class="form-control mr-2" placeholder="Filter by Category" />
+            <button id="filter-button" class="btn btn-info">Filter</button>
+        </div>
+
+        <h2 class="mt-5">Add Product</h2>
+        <form id="add-product-form" action="#">
+            <div class="form-group">
+                <input type="text" id="title" class="form-control" name="title" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="photo" class="form-control" name="photo" placeholder="URL" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="category" class="form-control" name="category" placeholder="Category" required>
+            </div>
+            <div class="form-group">
+                <input type="number" id="price" class="form-control" name="price" placeholder="Price" required>
+            </div>
+            <div class="form-group">
+                <input type="number" id="stock" class="form-control" name="stock" placeholder="Stock" required>
+            </div>
+            <button type="submit" class="btn btn-success">Add</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
