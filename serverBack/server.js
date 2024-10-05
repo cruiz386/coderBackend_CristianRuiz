@@ -8,7 +8,10 @@ import router from "./src/routers/index.router.js";
 import errorHandler from "./src/middlewares/errorHandler.mid.js";
 import pathHandler from "./src/middlewares/pathHandler.mid.js";
 import __dirname from "./utils.js";
-import socketCb from "./src/routers/index.socket.js"; 
+import socketCb from "./src/routers/index.socket.js";
+import session from 'express-session';
+import isValidDataProduct from "./src/middlewares/isValidDataProducts.mid.js";
+import isValidDataUser from "./src/middlewares/isValidDataUsers.mid.js";
 
 try {
   const server = express();
@@ -27,6 +30,8 @@ try {
   server.use(express.json());
   server.use(cors());
   server.use("/public", express.static("public"));
+  // server.use(isValidDataProduct);
+  // server.use(isValidDataUser);
 
   // Configuración de handlebars
   server.engine("handlebars", engine());
@@ -39,6 +44,9 @@ try {
   // Manejo de errores
   server.use(errorHandler);
   server.use(pathHandler);
+
+
+
 } catch (error) {
   console.log(error);
 }

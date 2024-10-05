@@ -84,19 +84,57 @@ class UserController {
     }
   }
 
- 
+
 
 }
 
 const registerView = async (req, res, next) => {
   try {
     const users = await usersFileManager.readAll()
-    return res.render("register", {users})
+    return res.render("register", { users })
   } catch (error) {
     next(error);
   }
 }
 
+// Controlador de login
+const loginView = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const users = await usersFileManager.readAll();
+
+    const user = users.find(user => user.email === email && user.password === password);
+ 
+    if (!user) {
+      return res.render("login", { error: "Usuario o contraseña incorrectos" });
+    }
+
+    // Guardar el usuario en la sesión
+    req.session.user = user;
+    
+    const products = await productsFileManager.readAll();
+    return res.render("adminproducts", { products }); 
+  } catch (error) {
+    next(error);
+  }
+};
+
+const logoutView = async (req, res, next) => {
+  try {
+    // Borrar la sesión
+    req.session.destroy();
+    return res.redirect("/login");
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+ 
+
+
+ 
 const userController = new UserController();
-export default   userController;
-export {registerView};
+
+export { registerView, loginView, logoutView }; 
+export default userController;
