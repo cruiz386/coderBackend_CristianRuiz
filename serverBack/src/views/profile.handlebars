@@ -1,0 +1,20 @@
+<div class="container text-center py-5">
+    <header>
+        <h1 class="mb-4 display-4 font-weight-bold">User Profile</h1>
+    </header>
+    <main class="d-flex flex-column align-items-center">
+        <section class="user-info mb-4 text-center">
+            <img src="{{user.photo}}" alt="Foto de perfil de {{user.email}}"
+                class="rounded-circle img-fluid mb-3 d-block mx-auto"
+                style="width: 150px; height: 150px; object-fit: cover; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        </section>
+        <section class="user-data text-left">
+            <div class="card p-3 shadow-sm" style="width: 350px; background-color: #f8f9fa; border-radius: 10px;">
+                <p class="h5"><strong>Email:</strong> {{user.email}}</p>
+                <p class="h5"><strong>Role:</strong> {{user.role}}</p>
+                <p class="h5"><strong>ID:</strong> {{user.id}}</p>
+            </div>
+        </section>
+    </main>
+</div>
+

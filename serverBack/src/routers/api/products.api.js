@@ -8,8 +8,8 @@ productsRouter.get('/',getAllProducts)
 productsRouter.get('/:pid',getProductById)
 
 productsRouter.post("/", isValidDataProduct, create);
+productsRouter.put('/:pid', isValidDataProduct, updateProduct);
 
-productsRouter.put('/:pid',updateProduct)
 productsRouter.delete('/:pid',destroyProduct)
 
 export default productsRouter

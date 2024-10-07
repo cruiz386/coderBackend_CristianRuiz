@@ -9,7 +9,7 @@ const viewRouter = Router()
 viewRouter.use("/products", productsViewRouter);
 viewRouter.use("/carts", cartsViewRouter);
 viewRouter.use("/users", usersViewRouter);
-
+ 
 viewRouter.use("/", (req, res, next) => {
   try {
     return res.render("index")

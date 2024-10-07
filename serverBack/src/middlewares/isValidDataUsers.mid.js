@@ -15,14 +15,15 @@ function isValidDataUser(req, res, next) {
     if (!password || typeof password !== 'string' || password.length < 6) {
       throw new Error("Password must be at least 6 characters long");
     }
+
     req.body.role = role || 0; // Valor por defecto
     req.body.photo = photo || "default_photo_url"; // Valor por defecto
     req.body.id = req.body.id || generateHexId(); // Genera un ID hexadecimal si no existe
 
-    return next();
+    return next(); // Si todo es válido, avanza al siguiente middleware
   } catch (error) {
-    error.statusCode = 400;
-    return next(error);
+    error.statusCode = 400; // Establece el código de estado
+    return next(error); // Pasa el error al siguiente middleware
   }
 }
 

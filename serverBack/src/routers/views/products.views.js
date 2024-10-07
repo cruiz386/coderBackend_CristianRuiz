@@ -10,3 +10,4 @@ productsViewRouter.get("/:pid", showOneProduct)
 productsViewRouter.get("/category/:category", showProductsByCategory)
 
 export default productsViewRouter
+ 

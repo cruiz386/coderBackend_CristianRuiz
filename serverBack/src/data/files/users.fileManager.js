@@ -1,6 +1,7 @@
 import fs from "fs";
 import crypto from "crypto";
 
+
 class UsersManager {
   constructor(path) {
     this.path = path;
@@ -108,9 +109,7 @@ class UsersManager {
         (user) => user.email === email && user.password === password
       );
       if (!user) {
-        const error = new Error("User not found");
-        error.statusCode = 404;
-        throw error;
+        return null;
       }
       return user;
     } catch (error) {
