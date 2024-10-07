@@ -81,6 +81,8 @@ class UsersManager {
       throw error;
     }
   }
+ 
+
 
   async destroy(id) {
     try {

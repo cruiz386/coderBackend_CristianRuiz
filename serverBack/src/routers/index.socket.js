@@ -28,7 +28,7 @@ const socketCb = (socket) => {
     await productsFileManager.update(productData.id, productData);
     await emitAllProducts();
   });
-
+ 
   // Búsqueda de productos
   socket.on("search products", async ({ pid, category }) => {
     const allProducts = await productsFileManager.readAll();
@@ -51,7 +51,7 @@ const socketCb = (socket) => {
     const allUsers = await usersFileManager.readAll();
     socket.emit("update user", allUsers);
   });
- 
+
 
 
   socket.on("user login", async ({ email, password }) => {
@@ -59,20 +59,22 @@ const socketCb = (socket) => {
     try {
       const user = await usersFileManager.findUser(email, password);
       if (!user) {
+
         // Enviar mensaje de error si no se encuentra el usuario
         socket.emit("login response", {
           success: false,
           message: "Invalid username or password"
+
         });
       } else {
+        
         // Respuesta exitosa si el usuario es válido, excluyendo la contraseña
         socket.emit("login response", {
           success: true,
-          user: { ...user, password: undefined }
+          user: { ...user, password: undefined, isOnline: true }
         });
       }
     } catch (error) {
-      console.log(error);
       socket.emit("login response", {
         success: false,
         message: error.message
@@ -81,7 +83,7 @@ const socketCb = (socket) => {
   });
 
 
-
+ 
 
   socket.on("user update", async (data) => {
     await usersFileManager.update(data.id, data);
@@ -104,4 +106,3 @@ const socketCb = (socket) => {
 
 export default socketCb;
 
-  

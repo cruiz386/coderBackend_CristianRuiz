@@ -1,8 +1,9 @@
 import crypto from "crypto";
 
+// Middleware para validar los datos de los usuarios
 function isValidDataUser(req, res, next) {
   try {
-    const { email, password, role, photo } = req.body;
+    const { email, password, role, photo, isOnline } = req.body;
 
     // Validación de Usuario
     if (!email) {
@@ -18,6 +19,7 @@ function isValidDataUser(req, res, next) {
 
     req.body.role = role || 0; // Valor por defecto
     req.body.photo = photo || "default_photo_url"; // Valor por defecto
+    req.body.isOnline = isOnline || false; // Valor por defecto
     req.body.id = req.body.id || generateHexId(); // Genera un ID hexadecimal si no existe
 
     return next(); // Si todo es válido, avanza al siguiente middleware

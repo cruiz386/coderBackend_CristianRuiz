@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function redirectToAdminProducts() {
     window.location.href = "/products";
   }
- 
+
   function redirectToHome() {
     window.location.href = "/";
   }
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function actualizarNavbar(isLoggedIn = false) {
     const navbarLinks = document.querySelector(".navbar-nav");
     const user = JSON.parse(localStorage.getItem("user"));
-    
+
     if (user && isLoggedIn) {
 
 
@@ -34,9 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <a class="nav-link" href="/products/admin">Admin Products</a>
         <a class="nav-link" href="/users/profile/${user.id}">Profile</a>
         <a class="nav-link" id="logout" href="#">Logout</a>
+        <img src="${user.photo}" alt="foto_user" class="img-thumbnail" style="max-width: 50px; height: 50px;">
       `;
 
-      // Agregar funcionalidad de logout
       document.getElementById("logout").addEventListener("click", () => {
         localStorage.removeItem("user");
         window.location.reload();
@@ -60,7 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     socket.on("login response", (data) => {
       if (data.success) {
-        alert("Login exitoso");
+
+
         redirectToAdminProducts();
         // Guardar el usuario en localStorage sin la contraseña
         localStorage.setItem("user", JSON.stringify(data.user));
@@ -79,6 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Cerrar sesión
   document.getElementById("logout")?.addEventListener("click", () => {
+
+    socket.emit("update user status", { userId: user.id, isOnline: false });
     localStorage.removeItem("user");
     window.location.reload(); // Recargar la página después del logout
     redirectToHome();
@@ -86,56 +89,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
   socket.on("user logout", () => {
     localStorage.removeItem("user");
+
     window.location.reload(); // Recargar la página después del logout
   });
 
-// Manejador de eventos para registrar un nuevo usuario
-document.querySelector("#registerForm")?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  
-  const role = document.querySelector("#role").value || 0; // Valor por defecto
-  const email = document.querySelector("#email").value;
-  const password = document.querySelector("#password").value;
-  const photo = document.querySelector("#photo").value || "default_photo_url"; // Valor por defecto
+  // Manejador de eventos para registrar un nuevo usuario
+  document.querySelector("#registerForm")?.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  // Validar campos obligatorios
-  let isValid = true;
+    const role = document.querySelector("#role").value || 0; // Valor por defecto
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
+    const photo = document.querySelector("#photo").value || "default_photo_url"; // Valor por defecto
 
-  // Validar email
-  if (!email) {
+
+    // Validar campos obligatorios
+    let isValid = true;
+
+    // Validar email
+    if (!email) {
       isValid = false;
       document.querySelector("#email").classList.add("is-invalid");
-  } else {
+    } else {
       document.querySelector("#email").classList.remove("is-invalid");
-  }
+    }
 
-  // Validar contraseña
-  if (!password || password.length < 6) {
+    // Validar contraseña
+    if (!password || password.length < 6) {
       isValid = false;
       document.querySelector("#password").classList.add("is-invalid");
-  } else {
+    } else {
       document.querySelector("#password").classList.remove("is-invalid");
-  }
+    }
 
-  // Validar foto
-  if (!photo) {
+    // Validar foto
+    if (!photo) {
       isValid = false;
       document.querySelector("#photo").classList.add("is-invalid");
-  } else {
+    } else {
       document.querySelector("#photo").classList.remove("is-invalid");
-  }
+    }
 
-  if (!isValid) {
+    if (!isValid) {
       alert("Por favor, completa todos los campos obligatorios.");
       return;
-  }
+    }
 
-  const userData = { role, email, password, photo };
-  socket.emit("new user", userData);
-});
+    const userData = { role, email, password, photo };
+    socket.emit("new user", userData);
+  });
 
 
-  
+
 
 
   // Manejar eventos relacionados con los productos (agregar, actualizar, eliminar)
@@ -155,7 +160,7 @@ document.querySelector("#registerForm")?.addEventListener("submit", (event) => {
         </td>
       </tr>`).join("");
   };
-  
+
 
   socket.on("update products", handleProductUpdates);
   socket.on("update filtered products", handleProductUpdates);

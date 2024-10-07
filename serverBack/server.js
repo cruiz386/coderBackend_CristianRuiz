@@ -10,16 +10,16 @@ import pathHandler from "./src/middlewares/pathHandler.mid.js";
 import __dirname from "./utils.js";
 import socketCb from "./src/routers/index.socket.js";
 
-
+ 
 try {
   const server = express();
   const PORT = 8080;
   const ready = () => console.log("Server ready on port " + PORT);
   const httpServer = createServer(server);
   const tcpServer = new Server(httpServer);
-
+ 
   tcpServer.on("connection", socketCb);
-
+ 
   httpServer.listen(PORT, ready);
 
   // Middleware

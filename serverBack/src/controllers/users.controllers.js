@@ -93,7 +93,7 @@ const loginView = async (req, res, next) => {
     const users = await usersFileManager.readAll();
     // Validar los datos de inicio de sesión
     if (!email || !password) {
-      return res.render("login", { error: "Por favor, rellena todos los campos" });
+      return res.render("login", { error: "Please provide an email and password" });
     }
 
     // Validar credenciales de inicio de sesión
@@ -103,7 +103,7 @@ const loginView = async (req, res, next) => {
     if (user) {
       return res.render("main", { user });
     } else {
-      return res.render("login", { error: "Usuario o contraseña incorrectos" });
+      return res.render("login", { error: "User not found" });
     }
   } catch (error) {
     next(error);
