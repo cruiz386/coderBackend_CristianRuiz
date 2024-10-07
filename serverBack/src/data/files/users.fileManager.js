@@ -1,12 +1,13 @@
 import fs from "fs";
 import crypto from "crypto";
 
+
 class UsersManager {
   constructor(path) {
     this.path = path;
     this.exists();
   }
-
+ 
   exists() {
     const exist = fs.existsSync(this.path);
     if (!exist) {
@@ -80,6 +81,8 @@ class UsersManager {
       throw error;
     }
   }
+ 
+
 
   async destroy(id) {
     try {
@@ -100,7 +103,25 @@ class UsersManager {
       throw error;
     }
   }
+
+  async findUser(email, password) {
+    try {
+      const allUsers = await this.readAll();
+      const user = allUsers.find(
+        (user) => user.email === email && user.password === password
+      );
+      if (!user) {
+        return null;
+      }
+      return user;
+    } catch (error) {
+      console.log(error); 
+      throw error;
+    } 
+  } 
+  
 }
+
 
 const usersFileManager = new UsersManager("./src/data/files/users.json");
 export default usersFileManager;

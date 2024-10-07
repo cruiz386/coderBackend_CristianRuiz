@@ -6,8 +6,10 @@ const usersRouter = Router()
 
 usersRouter.get('/',userController.readUsers)
 usersRouter.get('/:uid',userController.readUserById)
+
 usersRouter.post("/", isValidDataUser, userController.createUser);
-usersRouter.put('/:uid',userController.updateUser)
+usersRouter.put('/:uid', isValidDataUser, userController.updateUser);
+
 usersRouter.delete('/:uid',userController.deleteUser)
 
 

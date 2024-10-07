@@ -142,6 +142,14 @@ async function showProductsByCategory(req, res, next) {
   }
 }
 
+async function adminProducts(req, res, next) {
+  try {
+    const products = await productsFileManager.readAll(); 
+    return res.render("adminproducts", { products }); 
+  } catch (error) {
+    return next(error);
+  }
+}
 
 
 
@@ -154,4 +162,5 @@ export {
   showProducts,
   showOneProduct,
   showProductsByCategory,
+  adminProducts,
 };

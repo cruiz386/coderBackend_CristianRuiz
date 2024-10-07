@@ -325,6 +325,14 @@
     "category": "gaming",
     "price": "1050000",
     "stock": "5",
+    "id": "c28441dfbf373155b73de1a3"
+  },
+  {
+    "title": "Monitor Gamer Samsung Odissey",
+    "photo": "/public/assets/img-products/Samsung_A54.png",
+    "category": "gaming",
+    "price": "1050000",
+    "stock": "5",
     "id": "193d2a3a461f8921756cfdcd"
   },
   {
@@ -336,27 +344,11 @@
     "id": "45e33c1c6b45bc3bf1e747c9"
   },
   {
-    "title": "Monitor Gamer Samsung Odissey",
+    "title": "Samsung A54",
     "photo": "/public/assets/img-products/Samsung_A54.png",
-    "category": "gaming",
-    "price": "1050000",
-    "stock": "5",
-    "id": "60656355d7aeeb504018aaf3"
-  },
-  {
-    "title": "Monitor Gamer Samsung Odissey",
-    "photo": "/public/assets/img-products/img_default.png",
-    "category": "default",
-    "price": 1,
-    "stock": 1,
-    "id": "f6332d8d55fffa4a8f435aad"
-  },
-  {
-    "title": "ZTE_Blade_A53.png",
-    "photo": "/public/assets/img-products/ZTE_Blade_A53.png",
-    "category": "phones ",
-    "price": "139999",
-    "stock": "5",
-    "id": "4c2df529f6ab1da66f49f73e"
+    "category": "phones",
+    "price": "800000",
+    "stock": "20",
+    "id": "385534c4f94962632a6338ae"
   }
 ]
