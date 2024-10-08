@@ -1,13 +1,14 @@
-import { schema, model } from 'mongoose';
+import mongoose from 'mongoose';
+const { Schema, model } = mongoose;
 
 const collection = 'products';
 
-const productSchema = new schema({
-    title: { String, required: true },
-    photo: { String, default: 'https://i.ytimg.com/vi/_LbbKKuimaM/maxresdefault.jpg' },
-    category: { String, default: 'phones' },
-    price: { Number, default: 1 },
-    stock: { Number, default: 1 }
+const productSchema = new Schema({
+    title: { type: String, required: true }, // Correcta definición del tipo y requerido
+    photo: { type: String, default: 'https://i.ytimg.com/vi/_LbbKKuimaM/maxresdefault.jpg' },
+    category: { type: String, default: 'phones' },
+    price: { type: Number, default: 1 },
+    stock: { type: Number, default: 1 }
 });
 
 const Product = model(collection, productSchema);

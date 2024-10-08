@@ -2,7 +2,7 @@ import crypto from "crypto";
 
 // Middleware para validar los datos de los usuarios
 function isValidDataUser(req, res, next) {
-  try {
+  try { 
     const { email, password, role, photo, isOnline } = req.body;
 
     // Validación de Usuario

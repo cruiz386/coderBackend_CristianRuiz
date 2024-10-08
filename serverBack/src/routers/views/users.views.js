@@ -6,7 +6,7 @@ const usersViewRouter = Router()
 usersViewRouter.get("/register", registerView)
 usersViewRouter.get("/login", loginView)
 usersViewRouter.get("/logout", logoutView)
-usersViewRouter.get("/profile/:uid", profileView)
+usersViewRouter.get("/profile/:_id", profileView)
 
 
-export default usersViewRouter   
+export default usersViewRouter    

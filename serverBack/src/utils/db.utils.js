@@ -1,23 +1,22 @@
 import { connect } from "mongoose";
 
- 
+
 
 async function dbConnect() {
 
-try {
+    try {
 
-await connect(process.env.DB_LINK);
+        await connect(process.env.DB_LINK);
+        console.log("mongo db connected");
 
-console.log("mongo db connected");
+    } catch (error) {
 
-} catch (error) {
+        console.log(error);
 
-console.log(error);
+    }
 
 }
 
-}
 
- 
 
 export default dbConnect;

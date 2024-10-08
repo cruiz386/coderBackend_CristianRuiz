@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <a class="nav-link" id="logout" href="#">Logout</a>
         <img src="${user.photo}" alt="foto_user" class="img-thumbnail" style="max-width: 50px; height: 50px;">
       `;
-
       document.getElementById("logout").addEventListener("click", () => {
         localStorage.removeItem("user");
         window.location.reload();
@@ -100,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const role = document.querySelector("#role").value || 0; // Valor por defecto
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
-    const photo = document.querySelector("#photo").value || "default_photo_url"; // Valor por defecto
+    const photo = document.querySelector("#photo").value || "https://i.ytimg.com/vi/bb5nPL38ptk/maxresdefault.jpg"; // Valor por defecto
 
 
     // Validar campos obligatorios
@@ -131,11 +130,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (!isValid) {
-      alert("Por favor, completa todos los campos obligatorios.");
+      alert("Please fill in all required fields.");
       return;
     }
 
     const userData = { role, email, password, photo };
+    redirectToHome();
     socket.emit("new user", userData);
   });
 

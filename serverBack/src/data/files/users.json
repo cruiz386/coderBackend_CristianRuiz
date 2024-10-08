@@ -38,5 +38,12 @@
     "photo": "/public/assets/img-users/avatar_user_2.jpg",
     "id": "e59eaf44994e62502ce6219d",
     "isOnline": false
+  },
+  {
+    "role": "admin",
+    "email": "admin@mail.com",
+    "password": "123456",
+    "photo": "default_photo_url",
+    "id": "7a6fe590c230804701cd449f"
   }
 ]

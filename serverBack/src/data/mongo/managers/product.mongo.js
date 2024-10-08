@@ -53,9 +53,7 @@ class ProductsMongoManager {
 
 
 
-
 }
 
 const productMongoManager = new ProductsMongoManager(Product)
-
 export default productMongoManager
