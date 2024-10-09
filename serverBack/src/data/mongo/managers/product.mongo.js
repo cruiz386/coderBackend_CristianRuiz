@@ -1,3 +1,5 @@
+//products manager de mongo
+
 import Product from "../models/product.model.js";
 
 
@@ -42,14 +44,19 @@ class ProductsMongoManager {
         }
     }
 
-    async destroy(pid) {
+    async destroy(productId) {
         try {
-            return await this.collection.findByIdAndDelete(pid);
+          const result = await Product.findByIdAndDelete(productId);
+          if (!result) {
+            throw new Error("Product not found");
+          }
+          return result;
         } catch (error) {
-            throw error;
+          console.error("Error deleting product:", error);
+          throw error;
         }
-
-    }
+      }
+      
 
 
 

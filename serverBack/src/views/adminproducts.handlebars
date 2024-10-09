@@ -1,5 +1,4 @@
 {{#if products}}
-
     <div class="container mt-5">
         <h1 class="text-center mb-4">Admin Products</h1>
         
@@ -73,23 +72,22 @@
             </thead>
             <tbody id="product-list">
                 {{#each products}}
-                <tr id="product-{{this.id}}">
-                    <td>{{this.id}}</td>
+                <tr id="product-{{this._id}}"> 
+                    <td>{{this._id}}</td> 
                     <td>{{this.title}}</td>
                     <td><img src="{{this.photo}}" alt="{{this.title}}" style="width: 50px; height: auto;"></td>
                     <td>{{this.category}}</td>
                     <td>${{this.price}}</td>
                     <td>{{this.stock}}</td>
                     <td>
-                        <a href="#" class="btn btn-danger delete-product" data-id="{{this.id}}">Delete</a>
-                        <a href="#" class="btn btn-warning update-product" data-id="{{this.id}}">Update</a>
+                        <a href="#" class="btn btn-danger delete-product" data-id="{{this._id}}">Delete</a> 
+                        <a href="#" class="btn btn-warning update-product" data-id="{{this._id}}">Update</a> 
                     </td>
                 </tr> 
                 {{/each}}
             </tbody>
         </table>
     </div>
-
 {{else}}
     <p>No products found.</p>
 {{/if}}

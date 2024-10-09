@@ -1,3 +1,5 @@
+//socket front end 
+
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io();
 
@@ -26,56 +28,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (user && isLoggedIn) {
+        navbarLinks.innerHTML = `
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/products">All products</a>
+            <a class="nav-link" href="/products/admin">Admin Products</a>
+            <a class="nav-link" href="/users/profile/${user._id}">Profile</a>
+            <a class="nav-link" id="logout" href="#">Logout</a>
+            <img src="${user.photo || '/default-profile.png'}" alt="foto_user" class="img-thumbnail" style="max-width: 50px; height: 50px;">
+        `;
 
-
-      navbarLinks.innerHTML = `
-        <a class="nav-link active" href="/">Home</a>
-        <a class="nav-link" href="/products">All products</a>
-        <a class="nav-link" href="/products/admin">Admin Products</a>
-        <a class="nav-link" href="/users/profile/${user.id}">Profile</a>
-        <a class="nav-link" id="logout" href="#">Logout</a>
-        <img src="${user.photo}" alt="foto_user" class="img-thumbnail" style="max-width: 50px; height: 50px;">
-      `;
-      document.getElementById("logout").addEventListener("click", () => {
-        localStorage.removeItem("user");
-        window.location.reload();
-      });
+        // Evento para el logout
+        document.getElementById("logout").addEventListener("click", () => {
+            localStorage.removeItem("user");
+            window.location.reload();
+        });
     } else {
-      navbarLinks.innerHTML = `
-        <a class="nav-link" href="/users/register">Register</a>
-        <a class="nav-link" href="/users/login">Login</a>
-      `;
+        navbarLinks.innerHTML = `
+            <a class="nav-link" href="/users/register">Register</a>
+            <a class="nav-link" href="/users/login">Login</a>
+        `;
     }
-  }
+}
+
+
 
   // Manejar eventos de login
   document.querySelector("#login-form")?.addEventListener("submit", (event) => {
     event.preventDefault();
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
-
-    // Enviar solicitud de inicio de sesión al servidor
-    socket.emit("user login", { email, password });
-
-    socket.on("login response", (data) => {
-      if (data.success) {
-
-
-        redirectToAdminProducts();
-        // Guardar el usuario en localStorage sin la contraseña
-        localStorage.setItem("user", JSON.stringify(data.user));
-
-        // Actualizar el navbar
-        actualizarNavbar(true);
-      } else {
-        alert("Credenciales incorrectas");
-        actualizarNavbar(false);
-      }
-    });
-
-    // Resetear el formulario después del intento
-    document.querySelector("#login-form").reset();
+  
+    try {
+      socket.emit("user login", { email, password });
+  
+      socket.on("login response", (data) => {
+        if (data.success) {
+          localStorage.setItem("user", JSON.stringify(data.user));
+          console.log("User logged in:", data.user);
+          
+          actualizarNavbar(true);
+          window.location.href = "/products";
+        } else {
+          alert("Credenciales incorrectas");
+        }
+      });
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("There was an error during login. Please try again.");
+    }
   });
+  
 
   // Cerrar sesión
   document.getElementById("logout")?.addEventListener("click", () => {
@@ -147,20 +149,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const handleProductUpdates = (products) => {
     const productList = document.getElementById("product-list");
     productList.innerHTML = products.map(product => `
-      <tr id="product-${product.id}">
-        <td>${product.id}</td>
+      <tr id="product-${product._id}">
+        <td>${product._id}</td>
         <td>${product.title}</td>
         <td><img src="${product.photo}" alt="${product.title}" class="img-thumbnail" style="max-width: 100px;"></td>
         <td>${product.category}</td>
         <td>${product.price}</td>
         <td>${product.stock}</td>
         <td>
-          <button class="btn btn-danger delete-product" data-id="${product.id}">Delete</button>
-          <button class="btn btn-warning update-product" data-id="${product.id}">Update</button>
+          <button class="btn btn-danger delete-product" data-id="${product._id}">Delete</button>
+          <button class="btn btn-warning update-product" data-id="${product._id}">Update</button>
         </td>
       </tr>`).join("");
   };
-
+ 
 
   socket.on("update products", handleProductUpdates);
   socket.on("update filtered products", handleProductUpdates);

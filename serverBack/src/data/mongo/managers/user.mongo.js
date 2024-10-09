@@ -8,7 +8,7 @@ class UsersManager {
     async create(data) {
         try {
             const user = await User.create(data);
-            return user.id;
+            return user;
         } catch (error) {
             throw error;
         }
@@ -25,15 +25,20 @@ class UsersManager {
       }
     
 
-      async readById(id) {
+      async readById(uid) {
         try {
-            const user = await User.findById(id);
+            // Verifica si uid es un ObjectId válido
+            if (!mongoose.Types.ObjectId.isValid(uid)) {
+                throw new Error("Invalid User ID");
+            }
+    
+            const user = await User.findById(uid);
             if (!user) {
                 throw new Error("User not found");
             }
             return user;
         } catch (error) {
-            throw error;
+            throw error; // Propaga el error hacia el controlador
         }
     }
 
@@ -67,6 +72,16 @@ class UsersManager {
             throw error;
         }
     }
+
+    async findUserByEmail(email) {
+        try {
+          const user = await User.findOne({ email });
+          return user;
+        } catch (error) {
+          throw error;
+        }
+      }
+      
 }
 
 const userMongoManager = new UsersManager();
