@@ -59,11 +59,12 @@ async function showProducts(req, res, next) {
     const { category } = req.query;
 
     // Obtener todos los productos, filtrando por categoría si se proporciona
-    const all = category ? await productMongoManager.readAll(category) : await productMongoManager.readAll();
+    const all = await productMongoManager.readAll(category); // Asegúrate de que la categoría se pase aquí
+    //console.log(all); // Para verificar qué productos se están obteniendo
 
     // Verificar si se encontraron productos
     if (all.length > 0) {
-      return res.render("products", { products: all });
+      return res.render("products", { products: all, category });
     } else {
       // En caso de que no se encuentren productos, devolver un error
       const error = new Error("No products found.");
@@ -101,6 +102,7 @@ async function showProductsByCategory(req, res, next) {
     if (products.length > 0) {
       return res.render("categoryproducts", { products, category });
     } else {
+      return res.render("productsNotFound");
       const error = new Error("No products found in this category");
       error.statusCode = 404;
       throw error;

@@ -5,40 +5,55 @@ import Product from "../models/product.model.js";
 
 class ProductsMongoManager {
 
-    constructor(collection) {
-        this.collection = collection;
+    constructor() {
+
     }
 
     async create(data) {
 
         try {
-            return await this.collection.create(data);
+            return await Product.create(data);
         } catch (error) {
             throw error;
         }
 
     };
 
-    async readAll() {
+    async readAll(category) {
         try {
-            return await this.collection.find();
-        } catch (error) {
-            throw error;
-        }
-
-    };
-
-    async readById(pid) {
-        try {
-            return await this.collection.findById(pid);
+            const query = category ? { category } : {}; // Filtrar por categoría si se proporciona
+            const products = await Product.find(query);
+            // Convertir los _id de ObjectId a strings
+            return products.map(product => ({
+                ...product.toObject(), // Convertir el documento a un objeto plano
+                _id: product._id.toString() // Convertir ObjectId a string
+            }));
         } catch (error) {
             throw error;
         }
     }
+    
+
+    async readById(pid) {
+        try {
+            const product = await Product.findById(pid);
+            // Verificar si el producto existe y convertir el _id a string
+            if (product) {
+                return {
+                    ...product.toObject(), // Para convertir el documento Mongoose a un objeto plano
+                    _id: product._id.toString() // Convertir ObjectId a string
+                };
+            }
+            return null; // Si no se encuentra el producto
+        } catch (error) {
+            throw error;
+        }
+    }
+    
 
     async update(pid, newData) {
         try {
-            return await this.collection.findByIdAndUpdate(pid, newData, { new: true });
+            return await Product.findByIdAndUpdate(pid, newData, { new: true });
         } catch (error) {
             throw error;
         }
