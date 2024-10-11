@@ -1,5 +1,7 @@
 import User from './../models/user.model.js';
 import mongoose from 'mongoose';
+import userSyncManager from '../../sync/users.sync.js'; 
+
 
 class UsersManager {
 
@@ -8,6 +10,7 @@ class UsersManager {
     async create(data) {
         try {
             const user = await User.create(data);
+            await userSyncManager.syncUsers(); // Sincronizar con FS y memoria
             return user;
         } catch (error) {
             throw error;
@@ -45,8 +48,9 @@ class UsersManager {
     async update(id, data) {
 
         try {
-            const user = await User.findByIdAndUpdate(id, data, { new: true });
-            return user;
+            const updatedUser = await User.findByIdAndUpdate(uid, data, { new: true });
+            await userSyncManager.syncUsers(); // Sincronizar con FS y memoria
+            return updatedUser;
 
         } catch (error) { 
             throw error;
@@ -56,8 +60,9 @@ class UsersManager {
     async destroy(id) {
 
         try {
-            const user = await User.findByIdAndDelete(id);
-            return user;
+            const deletedUser = await User.findByIdAndDelete(uid);
+            await userSyncManager.syncUsers(); // Sincronizar con FS y memoria
+            return deletedUser;
 
         } catch (error) {
             throw error;

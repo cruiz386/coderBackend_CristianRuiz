@@ -1,5 +1,5 @@
 //products manager de mongo
-
+import productSyncManager from '../../sync/products.sync.js'; 
 import Product from "../models/product.model.js";
 
 
@@ -12,7 +12,9 @@ class ProductsMongoManager {
     async create(data) {
 
         try {
-            return await Product.create(data);
+            const product = await Product.create(data);
+            await productSyncManager.syncProducts(); // Sincronizar con FS y memoria
+            return product;
         } catch (error) {
             throw error;
         }
@@ -53,7 +55,9 @@ class ProductsMongoManager {
 
     async update(pid, newData) {
         try {
-            return await Product.findByIdAndUpdate(pid, newData, { new: true });
+            const updatedProduct = await Product.findByIdAndUpdate(pid, newData, { new: true });
+            await productSyncManager.syncProducts(); // Sincronizar con FS y memoria
+            return updatedProduct;
         } catch (error) {
             throw error;
         }
@@ -65,7 +69,8 @@ class ProductsMongoManager {
           if (!result) {
             throw new Error("Product not found");
           }
-          return result;
+          await productSyncManager.syncProducts(); // Sincronizar con FS y memoria
+            return result;
         } catch (error) {
           console.error("Error deleting product:", error);
           throw error;
