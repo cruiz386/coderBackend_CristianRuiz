@@ -77,6 +77,34 @@ async function showProducts(req, res, next) {
   }
 }
 
+async function productsIndexView(req,res,next){
+  try {
+    const { category } = req.query;
+
+    // Obtener todos los productos, filtrando por categoría si se proporciona
+    const all = await productMongoManager.readAll(category); // Asegúrate de que la categoría se pase aquí
+    //console.log(all); // Para verificar qué productos se están obteniendo
+
+    // Verificar si se encontraron productos
+    if (all.length > 0) {
+      return res.render("index", { products: all, category });
+    } else {
+      // En caso de que no se encuentren productos, devolver un error
+      const error = new Error("No products found.");
+      error.statusCode = 404;
+      throw error; // Esto será manejado en el middleware de error
+    }
+  } catch (error) {
+    // Pasar el error al siguiente middleware
+    return next(error);
+  }
+
+}
+
+
+
+
+
 
 async function showOneProduct(req, res, next) {
   
@@ -122,4 +150,4 @@ async function adminProducts(req, res, next) {
 }
 
  
-export { create, getAllProducts, getProductById, destroyProduct, updateProduct, showProducts, showOneProduct, showProductsByCategory, adminProducts };
+export { create, getAllProducts, getProductById, destroyProduct, updateProduct, showProducts, showOneProduct, showProductsByCategory, adminProducts, productsIndexView };

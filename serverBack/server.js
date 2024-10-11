@@ -14,7 +14,6 @@ import dbConnect from "./src/utils/db.utils.js";
  
 try {
   const server = express();
-  //const PORT = 8080;
   const PORT = process.env.PORT || 8080;
 
   const ready = async () => {
