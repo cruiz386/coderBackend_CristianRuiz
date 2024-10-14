@@ -75,7 +75,7 @@ async function showProducts(req, res, next) {
     // Pasar el error al siguiente middleware
     return next(error);
   }
-}
+}  
 
 async function productsIndexView(req,res,next){
   try {

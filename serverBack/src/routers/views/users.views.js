@@ -9,4 +9,4 @@ usersViewRouter.get("/logout", logoutView)
 usersViewRouter.get("/profile/:uid", profileView)
 
 
-export default usersViewRouter    
+export default usersViewRouter     

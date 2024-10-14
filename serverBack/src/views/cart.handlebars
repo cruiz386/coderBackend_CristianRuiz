@@ -1,0 +1,37 @@
+<div class="row justify-content-center mt-5 mb-5">
+    {{#if carts.length}}
+    {{#each carts}}
+    <div class="col-md-4 d-flex align-items-stretch justify-content-center">
+        <div class="card mb-4 shadow-sm flex-grow-1">
+            <img src="{{this.productDetails.photo}}" class="card-img-top img-fluid mx-auto d-block" alt="{{this.productDetails.title}}" style="max-width: 30%; max-height: 200px; object-fit: cover">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-center">{{this.productDetails.title}}</h5>
+                <p class="card-text text-center">Price: {{this.productDetails.price}}</p>
+                <p class="card-text text-center">Quantity: {{this.quantity}}</p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                    <!-- Botón para eliminar producto -->
+                    <button class="btn btn-outline-danger d-block mx-auto my-3 w-25 remove-cart-item" data-id="{{this.productDetails._id}}" id="delete-cart-btn">Remove</button>
+
+                    <!-- Input para manejar la cantidad -->
+                    <div class="d-flex">
+                        <button class="btn btn-secondary mx-1" data-id="{{this.productDetails._id}}" data-action="decrease">-</button>
+                        <input type="number" class="form-control mx-1 quantity-input" value="{{this.quantity}}" style="width: 50px">
+                        <button class="btn btn-secondary mx-1" data-id="{{this.productDetails._id}}" data-action="increase">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+
+    <!-- Botones para finalizar o cancelar la compra -->
+    <div class="col-md-12 text-center mt-4">
+        <button class="btn btn-success mx-2" id="finish-purchase">Finish Purchase</button>
+        <button class="btn btn-secondary mx-2" id="cancel-purchase">Cancel</button>
+    </div>
+    {{else}}
+    <p class="text-center text-secondary my-5 shadow-sm p-3 rounded bg-white" style=" w-75 font-weight-bold font-size: 7rem">Your cart is empty.</p>
+    {{/if}}
+</div>
+
+

@@ -1,8 +1,12 @@
 import { Router } from "express";
+import {   showCartByUser } from "../../controllers/cart.controller.js";
 
-const cartViewRouter   = Router();
 
-//cartViewRouter.get("/cart/:uid", showProductsCart)
+const cartViewRouter = Router();
 
-export default cartViewRouter
-  
+// Ruta para mostrar la vista del carrito
+cartViewRouter.get("/:userId", showCartByUser);
+
+
+
+export default cartViewRouter;

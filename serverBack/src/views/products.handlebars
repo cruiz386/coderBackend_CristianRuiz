@@ -2,16 +2,18 @@
 <section class="d-flex justify-content-center">
   <div class="d-flex flex-wrap justify-content-evenly" style="max-width: 1200px;">
     {{#each products}}
-      <div class="card my-2 mx-auto" style="width: 18rem;">
-        <img src="{{this.photo}}" class="card-img-top mx-auto" alt="{{this.title}}" style="max-width: 100%; height: auto;">
-        <div class="card-body">
-          <h5 class="card-title text-center my-3">{{this.title}}</h5>
-          <p class="card-text text-center">{{this.category}}</p>
-          <a href="/products/{{this._id}}" class="btn btn-outline-primary d-block mx-auto my-3 w-75">+info</a>
-        </div>
+    <div class="card my-2 mx-auto" style="width: 18rem;">
+      <img src="{{this.photo}}" class="card-img-top mx-auto" alt="{{this.title}}"
+        style="max-width: 100%; height: auto;">
+      <div class="card-body">
+        <h5 class="card-title text-center my-3">{{this.title}}</h5>
+        <p class="card-text text-center">{{this.category}}</p>
+        <a href="/products/{{this._id}}" class="btn btn-outline-primary d-block mx-auto my-3 w-75">+info</a>
+
+        <button class="btn btn-outline-success add-to-cart d-block mx-auto my-3 w-75" data-id="{{this._id}}">Add to cart</button>
+
       </div>
+    </div>
     {{/each}}
   </div>
 </section>
-
-
