@@ -1,171 +1,175 @@
+
+// socket front end
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io();
 
   // Recuperar usuario del localStorage
   const user = JSON.parse(localStorage.getItem("user"));
+  const userId = user ? user._id : null;
 
   // Actualizar el navbar según el estado del usuario
   if (user) {
     actualizarNavbar(true);
+
   } else {
     actualizarNavbar(false);
+
   }
 
-  // Función para redirigir a la página de administración de productos
-  function redirectToAdminProducts() {
-    window.location.href = "/products";
-  }
-
+  // Función para redirigir al home
   function redirectToHome() {
-    window.location.href = "/";
+    window.location.href = "/home";
   }
 
-  // Función para actualizar el navbar
+
   function actualizarNavbar(isLoggedIn = false) {
     const navbarLinks = document.querySelector(".navbar-nav");
-    const user = JSON.parse(localStorage.getItem("user"));
 
     if (user && isLoggedIn) {
-
-
       navbarLinks.innerHTML = `
-        <a class="nav-link active" href="/">Home</a>
+        <a class="nav-link active" href="/home">Home</a>
         <a class="nav-link" href="/products">All products</a>
         <a class="nav-link" href="/products/admin">Admin Products</a>
-        <a class="nav-link" href="/users/profile/${user.id}">Profile</a>
-        <a class="nav-link" id="logout" href="#">Logout</a>
-        <img src="${user.photo}" alt="foto_user" class="img-thumbnail" style="max-width: 50px; height: 50px;">
+        <a class="nav-link" href="/cart/${user._id}">Cart</a>
+        <a class="nav-link" href="/users/profile/${user._id}">Profile</a>
+        <a class="nav-link" id="logout" href="/users/Logout">Logout</a>
+        <img src="${user.photo || '/default-profile.png'}" alt="foto_user" class="img-thumbnail" style="max-width: 50px; height: 50px;">
       `;
+
 
       document.getElementById("logout").addEventListener("click", () => {
         localStorage.removeItem("user");
-        window.location.reload();
+        redirectToHome();
       });
     } else {
       navbarLinks.innerHTML = `
+        <a class="nav-link active" href="/home">Home</a>
         <a class="nav-link" href="/users/register">Register</a>
         <a class="nav-link" href="/users/login">Login</a>
       `;
     }
   }
 
+
+  ///////////////
+  //  USERS  //
+  ///////////////
+
   // Manejar eventos de login
-  document.querySelector("#login-form")?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const email = document.querySelector("#email").value;
-    const password = document.querySelector("#password").value;
+  const loginForm = document.querySelector("#login-form");
+  if (loginForm) {
+    loginForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const email = document.querySelector("#email").value;
+      const password = document.querySelector("#password").value;
 
-    // Enviar solicitud de inicio de sesión al servidor
-    socket.emit("user login", { email, password });
+      try {
+        socket.emit("user login", { email, password });
 
-    socket.on("login response", (data) => {
-      if (data.success) {
+        socket.on("login response", (data) => {
+          if (data.success) {
+            localStorage.setItem("user", JSON.stringify(data.user));
+            console.log("User logged in:", data.user);
 
+            actualizarNavbar(true);
 
-        redirectToAdminProducts();
-        // Guardar el usuario en localStorage sin la contraseña
-        localStorage.setItem("user", JSON.stringify(data.user));
-
-        // Actualizar el navbar
-        actualizarNavbar(true);
-      } else {
-        alert("Credenciales incorrectas");
-        actualizarNavbar(false);
+            window.location.href = "/products";
+          } else {
+            alert("Credenciales incorrectas");
+          }
+        });
+      } catch (error) {
+        console.error("Error during login:", error);
+        alert("There was an error during login. Please try again.");
       }
     });
-
-    // Resetear el formulario después del intento
-    document.querySelector("#login-form").reset();
-  });
+  }
 
   // Cerrar sesión
-  document.getElementById("logout")?.addEventListener("click", () => {
-
-    socket.emit("update user status", { userId: user.id, isOnline: false });
-    localStorage.removeItem("user");
-    window.location.reload(); // Recargar la página después del logout
-    redirectToHome();
-  });
-
-  socket.on("user logout", () => {
-    localStorage.removeItem("user");
-
-    window.location.reload(); // Recargar la página después del logout
-  });
+  const logoutBtn = document.getElementById("logout");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      socket.emit("update user status", { userId, isOnline: false });
+      localStorage.removeItem("user");
+      redirectToHome();
+    });
+  }
 
   // Manejador de eventos para registrar un nuevo usuario
-  document.querySelector("#registerForm")?.addEventListener("submit", (event) => {
-    event.preventDefault();
+  const registerForm = document.querySelector("#registerForm");
+  if (registerForm) {
+    registerForm.addEventListener("submit", (event) => {
+      event.preventDefault();
 
-    const role = document.querySelector("#role").value || 0; // Valor por defecto
-    const email = document.querySelector("#email").value;
-    const password = document.querySelector("#password").value;
-    const photo = document.querySelector("#photo").value || "default_photo_url"; // Valor por defecto
+      const role = document.querySelector("#role").value || 0; // Valor por defecto
+      const email = document.querySelector("#email").value;
+      const password = document.querySelector("#password").value;
+      const photo = document.querySelector("#photo").value || "https://i.ytimg.com/vi/bb5nPL38ptk/maxresdefault.jpg"; // Valor por defecto
 
+      // Validar campos obligatorios
+      let isValid = true;
 
-    // Validar campos obligatorios
-    let isValid = true;
+      // Validar email
+      if (!email) {
+        isValid = false;
+        document.querySelector("#email").classList.add("is-invalid");
+      } else {
+        document.querySelector("#email").classList.remove("is-invalid");
+      }
 
-    // Validar email
-    if (!email) {
-      isValid = false;
-      document.querySelector("#email").classList.add("is-invalid");
-    } else {
-      document.querySelector("#email").classList.remove("is-invalid");
-    }
+      // Validar contraseña
+      if (!password || password.length < 6) {
+        isValid = false;
+        document.querySelector("#password").classList.add("is-invalid");
+      } else {
+        document.querySelector("#password").classList.remove("is-invalid");
+      }
 
-    // Validar contraseña
-    if (!password || password.length < 6) {
-      isValid = false;
-      document.querySelector("#password").classList.add("is-invalid");
-    } else {
-      document.querySelector("#password").classList.remove("is-invalid");
-    }
+      // Validar foto
+      if (!photo) {
+        isValid = false;
+        document.querySelector("#photo").classList.add("is-invalid");
+      } else {
+        document.querySelector("#photo").classList.remove("is-invalid");
+      }
 
-    // Validar foto
-    if (!photo) {
-      isValid = false;
-      document.querySelector("#photo").classList.add("is-invalid");
-    } else {
-      document.querySelector("#photo").classList.remove("is-invalid");
-    }
+      if (!isValid) {
+        alert("Please fill in all required fields.");
+        return;
+      }
 
-    if (!isValid) {
-      alert("Por favor, completa todos los campos obligatorios.");
-      return;
-    }
+      const userData = { role, email, password, photo };
+      redirectToHome();
+      socket.emit("new user", userData);
+    });
+  }
 
-    const userData = { role, email, password, photo };
-    socket.emit("new user", userData);
-  });
+  ///////////////
+  //  PRODUCTS  //
+  ///////////////
 
-
-
-
-
-  // Manejar eventos relacionados con los productos (agregar, actualizar, eliminar)
   const handleProductUpdates = (products) => {
     const productList = document.getElementById("product-list");
     productList.innerHTML = products.map(product => `
-      <tr id="product-${product.id}">
-        <td>${product.id}</td>
+      <tr id="product-${product._id}">
+        <td>${product._id}</td>
         <td>${product.title}</td>
         <td><img src="${product.photo}" alt="${product.title}" class="img-thumbnail" style="max-width: 100px;"></td>
         <td>${product.category}</td>
         <td>${product.price}</td>
         <td>${product.stock}</td>
         <td>
-          <button class="btn btn-danger delete-product" data-id="${product.id}">Delete</button>
-          <button class="btn btn-warning update-product" data-id="${product.id}">Update</button>
+          <button class="btn btn-danger delete-product" data-id="${product._id}">Delete</button>
+          <button class="btn btn-warning update-product" data-id="${product._id}">Update</button>
         </td>
       </tr>`).join("");
   };
 
-
+  // Escuchar actualización de productos
   socket.on("update products", handleProductUpdates);
   socket.on("update filtered products", handleProductUpdates);
 
-  // Eventos de eliminación y actualización de productos
+  // Delegación de eventos para eliminar y actualizar productos
   document.getElementById("product-list")?.addEventListener("click", (event) => {
     const productId = event.target.dataset.id;
     if (event.target.classList.contains("delete-product")) {
@@ -174,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const productRow = document.getElementById(`product-${productId}`);
       document.getElementById("update-id").value = productId;
       document.getElementById("update-title").value = productRow.cells[1].innerText;
-      document.getElementById("update-photo").value = productRow.cells[2].innerText;
+      document.getElementById("update-photo").value = productRow.cells[2].querySelector("img").src;
       document.getElementById("update-category").value = productRow.cells[3].innerText;
       document.getElementById("update-price").value = productRow.cells[4].innerText;
       document.getElementById("update-stock").value = productRow.cells[5].innerText;
@@ -218,4 +222,180 @@ document.addEventListener("DOMContentLoaded", () => {
     const category = document.getElementById("search-category").value;
     socket.emit("search products", { pid, category });
   });
+
+
+
+
+  ///////////////
+  //  CART  //
+  ///////////////
+
+  // Manejar la respuesta al actualizar el carrito
+  socket.on("update cart", (updatedCart) => {
+    window.location.reload();
+  });
+
+  // Delegación de eventos para eliminar elementos del carrito
+  const removeCartButtons = document.querySelectorAll(".remove-cart-item");
+  removeCartButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const productId = button.dataset.id;
+
+      console.log(`productId: ${productId} -  userId: ${userId}`);
+
+      socket.emit("remove cart item", { userId, productId }, (response) => {
+        if (response.error) {
+          console.error("Error al eliminar del carrito:", response.error);
+        } else {
+          console.log("Producto eliminado del carrito:", response);
+        }
+      });
+
+    });
+  });
+
+
+
+  const addToCartButtons = document.querySelectorAll(".add-to-cart");
+  addToCartButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const productId = button.dataset.id;
+
+      console.log(`productId: ${productId} -  userId: ${userId}`);
+
+      socket.emit("add to cart", { userId, productId }, (response) => {
+        if (response.error) {
+          console.error("Error al agregar al carrito:", response.error);
+        } else {
+          console.log("Producto agregado al carrito:", response);
+        }
+      });
+    });
+  });
+
+
+
+  document.querySelectorAll("button[data-action]").forEach(button => {
+    button.addEventListener("click", (event) => {
+      const productId = event.currentTarget.dataset.id;
+      const action = event.currentTarget.dataset.action;
+      const quantityInput = event.currentTarget.parentElement.querySelector(".quantity-input");
+      let quantity = parseInt(quantityInput.value);
+
+      if (action === "increase") {
+        quantity++;
+      } else if (action === "decrease" && quantity > 1) {
+        quantity--;
+      }
+
+      quantityInput.value = quantity;
+
+      socket.emit("update cart item", { productId, quantity });
+    });
+  });
+
+
+
+
+
+  document.getElementById("finish-purchase")?.addEventListener("click", () => {
+    socket.emit("finish purchase", { userId });
+  });
+
+
+  socket.on("finish purchase response", (response) => {
+    if (response.success) {
+      const { products, totalPrice } = response;
+      const msg = `Purchase successful! You have purchased: ${products.map(product => product.title).join(", ")}\nfor a total of $${totalPrice}`;
+      const alertContainer = document.getElementById("finish-purchase-alert");
+
+
+      const alert = document.createElement("div");
+      alert.className = "alert alert-success text-center";
+      alert.style.cssText = "position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 400px; border-radius: 15px;";
+
+      const message = document.createElement("p");
+      message.className = "mb-0";
+      message.style.fontSize = "18px";
+      message.textContent = msg;
+
+
+      const okButton = document.createElement("button");
+      okButton.className = "btn btn-success mt-3";
+      okButton.textContent = "OK";
+      okButton.style.width = "50%";
+      okButton.style.borderRadius = "10px";
+
+
+      okButton.addEventListener("click", () => {
+        window.location.href = "/home";
+      });
+
+
+      alertContainer.innerHTML = "";
+      alert.appendChild(message);
+      alert.appendChild(okButton);
+      alertContainer.appendChild(alert);
+
+    } else {
+
+      Swal.fire({
+        title: "Error",
+        text: `Error during purchase: ${response.message}`,
+        icon: "error",
+        confirmButtonText: "OK"
+      });
+    }
+  });
+
+
+  document.getElementById("cancel-purchase")?.addEventListener("click", () => {
+    socket.emit("cancel purchase", { userId });
+  });
+
+
+  socket.on("cancel purchase response", (response) => {
+    if (response.success) {
+      const msg = "Purchase has been successfully canceled.";
+      const alertContainer = document.getElementById("cancel-purchase-alert");
+
+
+      const alert = document.createElement("div");
+      alert.className = "alert alert-warning text-center";
+      alert.style.cssText = "position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 400px; border-radius: 15px;";
+
+
+      const message = document.createElement("p");
+      message.className = "mb-0";
+      message.style.fontSize = "18px";
+      message.textContent = msg;
+
+      const okButton = document.createElement("button");
+      okButton.className = "btn btn-warning mt-3";
+      okButton.textContent = "OK";
+      okButton.style.width = "50%";
+      okButton.style.borderRadius = "10px";
+
+
+      okButton.addEventListener("click", () => {
+        window.location.href = "/home";
+      });
+
+      alertContainer.innerHTML = "";
+      alert.appendChild(message);
+      alert.appendChild(okButton);
+      alertContainer.appendChild(alert);
+
+    } else {
+
+      Swal.fire({
+        title: "Error",
+        text: `Error canceling purchase: ${response.message}`,
+        icon: "error",
+        confirmButtonText: "OK"
+      });
+    }
+  });
+
+
 });

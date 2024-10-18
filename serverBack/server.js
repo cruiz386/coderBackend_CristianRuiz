@@ -1,3 +1,4 @@
+import "dotenv/config.js";
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
@@ -9,12 +10,17 @@ import errorHandler from "./src/middlewares/errorHandler.mid.js";
 import pathHandler from "./src/middlewares/pathHandler.mid.js";
 import __dirname from "./utils.js";
 import socketCb from "./src/routers/index.socket.js";
-
+import dbConnect from "./src/utils/db.utils.js";
  
 try {
   const server = express();
-  const PORT = 8080;
-  const ready = () => console.log("Server ready on port " + PORT);
+  const PORT = process.env.PORT || 8080;
+
+  const ready = async () => {
+    console.log("Server ready on port " + PORT);
+    await dbConnect();
+  }
+
   const httpServer = createServer(server);
   const tcpServer = new Server(httpServer);
  
