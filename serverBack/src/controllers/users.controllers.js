@@ -1,7 +1,5 @@
 // user controller con Mongo
-
 import userMongoManager from "../data/mongo/managers/user.mongo.js";
-
 
 class UserControllerMongo {
   async readUsers(req, res, next) {
@@ -23,21 +21,18 @@ class UserControllerMongo {
   async createUser(req, res, next) {
     try {
       const data = req.body;
-  
-      // Verificar si el usuario ya existe por su email
+
       const existingUser = await userMongoManager.findUserByEmail(data.email);
       if (existingUser) {
         return res.status(400).json({ message: "Email already exists" });
       }
-  
-      // Crear el usuario si no existe
       const userId = await userMongoManager.create(data);
-      return res.status(201).json({ message: `User created with id ${userId}` });
+      return res.status(201).json({ statusCode: 201, response: userId });
     } catch (error) {
       return next(error);
     }
   }
-  
+
 
   async deleteUser(req, res, next) {
     try {
@@ -84,17 +79,16 @@ const loginView = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const users = await userMongoManager.readAll();
-    // Validar los datos de inicio de sesión
+
     if (!email || !password) {
       return res.render("login", { error: "Please provide an email and password" });
     }
 
-    // Validar credenciales de inicio de sesión
     const user = users.find(
       (user) => user.email === email && user.password === password
     );
     if (user) {
-      return res.render("main", { user });
+      return res.render("main", user);
     } else {
       return res.render("login", { error: "User not found" });
     }
@@ -102,7 +96,8 @@ const loginView = async (req, res, next) => {
     next(error);
   }
 };
-const logoutView = async (req, res, next) =>{
+
+const logoutView = async (req, res, next) => {
 
   try {
     return res.render("login");
@@ -112,32 +107,26 @@ const logoutView = async (req, res, next) =>{
 };
 
 const profileView = async (req, res, next) => {
-  const { uid } = req.params; // Asegúrate de que uid es el parámetro correcto
+  const { uid } = req.params;
 
   if (!uid) {
     return res.status(400).json({ message: "User ID is required" });
   }
 
   try {
-    // Busca el usuario directamente por el uid
-    const user = await userMongoManager.readById(uid); // Asumiendo que tienes este método
+    const user = await userMongoManager.readById(uid);
 
-    // Verifica si se encontró el usuario
     if (!user) {
       const error = new Error("User not found");
       error.statusCode = 404;
       throw error;
     }
-
-    // Renderiza la vista del perfil del usuario
     return res.render("profile", { user: user.toObject({ getters: true }) });
   } catch (error) {
-    // Manejo de errores
+
     return next(error);
   }
 };
-
-
 
 
 

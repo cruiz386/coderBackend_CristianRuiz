@@ -1,62 +1,69 @@
 //products manager de mongo
-import productSyncManager from '../../sync/products.sync.js'; 
+import productSyncManager from '../../sync/products.sync.js';
 import Product from "../models/product.model.js";
 
 
 class ProductsMongoManager {
 
     constructor() {
-
     }
 
     async create(data) {
-
         try {
             const product = await Product.create(data);
-            await productSyncManager.syncProducts(); // Sincronizar con FS y memoria
+            await productSyncManager.syncProducts();
             return product;
         } catch (error) {
             throw error;
         }
-
     };
 
     async readAll(category) {
         try {
-            const query = category ? { category } : {}; // Filtrar por categoría si se proporciona
+            const query = category ? { category } : {};
             const products = await Product.find(query);
-            // Convertir los _id de ObjectId a strings
+
             return products.map(product => ({
-                ...product.toObject(), // Convertir el documento a un objeto plano
-                _id: product._id.toString() // Convertir ObjectId a string
+                ...product.toObject(),
+                _id: product._id.toString()
             }));
         } catch (error) {
             throw error;
         }
     }
-    
+
+    paginate = async (category, paginate) => {
+        try {
+            const query = category ? { category } : {};
+            const products = await Product.paginate(query, {
+                ...paginate,
+                lean: true
+            });
+            return products;
+        } catch (error) {
+            throw error;
+        }
+    };
 
     async readById(pid) {
         try {
             const product = await Product.findById(pid);
-            // Verificar si el producto existe y convertir el _id a string
             if (product) {
                 return {
-                    ...product.toObject(), // Para convertir el documento Mongoose a un objeto plano
-                    _id: product._id.toString() // Convertir ObjectId a string
+                    ...product.toObject(),
+                    _id: product._id.toString()
                 };
             }
-            return null; // Si no se encuentra el producto
+            return null;
         } catch (error) {
             throw error;
         }
     }
-    
 
     async update(pid, newData) {
         try {
             const updatedProduct = await Product.findByIdAndUpdate(pid, newData, { new: true });
-            await productSyncManager.syncProducts(); // Sincronizar con FS y memoria
+            await productSyncManager.syncProducts();
             return updatedProduct;
         } catch (error) {
             throw error;
@@ -65,20 +72,17 @@ class ProductsMongoManager {
 
     async destroy(productId) {
         try {
-          const result = await Product.findByIdAndDelete(productId);
-          if (!result) {
-            throw new Error("Product not found");
-          }
-          await productSyncManager.syncProducts(); // Sincronizar con FS y memoria
+            const result = await Product.findByIdAndDelete(productId);
+            if (!result) {
+                throw new Error("Product not found");
+            }
+            await productSyncManager.syncProducts();
             return result;
         } catch (error) {
-          console.error("Error deleting product:", error);
-          throw error;
+            console.error("Error deleting product:", error);
+            throw error;
         }
-      }
-      
-
-
+    }
 
 }
 

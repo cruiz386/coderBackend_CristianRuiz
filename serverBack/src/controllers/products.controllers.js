@@ -1,6 +1,5 @@
 
 // products controller con Mongo
-
 import productMongoManager from "../data/mongo/managers/product.mongo.js";
 
 
@@ -20,7 +19,19 @@ async function getAllProducts(req, res, next) {
     return res.status(200).json({ message: "PRODUCTS READ", response: products });
   } catch (error) {
     return next(error);
-  } 
+  }
+}
+
+async function paginate(req, res, next) {
+  try {
+    //const filter = req.query;
+    const { page, limit } = req.query;
+    const products = await productMongoManager.paginate({}, { page, limit });
+
+    return res.status(200).json({ message: "PRODUCTS READ", response: products });
+  } catch (error) {
+    return next(error);
+  }
 }
 
 async function getProductById(req, res, next) {
@@ -54,60 +65,64 @@ async function updateProduct(req, res, next) {
   }
 }
 
+
 async function showProducts(req, res, next) {
   try {
-    const { category } = req.query;
+    const { category, page = 1, limit = 8 } = req.query;
+    const all = await productMongoManager.paginate(category, { page, limit });
+    if (all.docs.length > 0) {
+      return res.render("products", {
+        products: all.docs, 
+        totalPages: all.totalPages,
+        currentPage: all.page, 
+        hasPrevPage: all.hasPrevPage, 
+        hasNextPage: all.hasNextPage, 
+        prevPage: all.prevPage, 
+        nextPage: all.nextPage, 
+        category 
+      });
 
-    // Obtener todos los productos, filtrando por categoría si se proporciona
-    const all = await productMongoManager.readAll(category); // Asegúrate de que la categoría se pase aquí
-    //console.log(all); // Para verificar qué productos se están obteniendo
-
-    // Verificar si se encontraron productos
-    if (all.length > 0) {
-      return res.render("products", { products: all, category });
     } else {
-      // En caso de que no se encuentren productos, devolver un error
       const error = new Error("No products found.");
       error.statusCode = 404;
-      throw error; // Esto será manejado en el middleware de error
+      throw error;
     }
   } catch (error) {
-    // Pasar el error al siguiente middleware
     return next(error);
   }
-}  
+}
 
-async function productsIndexView(req,res,next){
+
+async function productsIndexView(req, res, next) {
   try {
-    const { category } = req.query;
+    const { category, page = 1, limit = 8 } = req.query;
+    const all = await productMongoManager.paginate(category, { page, limit });
+    if (all.docs.length > 0) {
+      return res.render("index", {
+        products: all.docs, 
+        totalPages: all.totalPages,
+        currentPage: all.page, 
+        hasPrevPage: all.hasPrevPage, 
+        hasNextPage: all.hasNextPage, 
+        prevPage: all.prevPage, 
+        nextPage: all.nextPage, 
+        category 
+      });
 
-    // Obtener todos los productos, filtrando por categoría si se proporciona
-    const all = await productMongoManager.readAll(category); // Asegúrate de que la categoría se pase aquí
-    //console.log(all); // Para verificar qué productos se están obteniendo
-
-    // Verificar si se encontraron productos
-    if (all.length > 0) {
-      return res.render("index", { products: all, category });
     } else {
-      // En caso de que no se encuentren productos, devolver un error
       const error = new Error("No products found.");
       error.statusCode = 404;
-      throw error; // Esto será manejado en el middleware de error
+      throw error;
     }
   } catch (error) {
-    // Pasar el error al siguiente middleware
     return next(error);
   }
 
 }
 
 
-
-
-
-
 async function showOneProduct(req, res, next) {
-  
+
   try {
     const { pid } = req.params;
     const response = await productMongoManager.readById(pid);
@@ -122,7 +137,7 @@ async function showOneProduct(req, res, next) {
     return next(error);
   }
 }
- 
+
 async function showProductsByCategory(req, res, next) {
   try {
     const { category } = req.params;
@@ -131,9 +146,6 @@ async function showProductsByCategory(req, res, next) {
       return res.render("categoryproducts", { products, category });
     } else {
       return res.render("productsNotFound");
-      const error = new Error("No products found in this category");
-      error.statusCode = 404;
-      throw error;
     }
   } catch (error) {
     return next(error);
@@ -149,5 +161,5 @@ async function adminProducts(req, res, next) {
   }
 }
 
- 
-export { create, getAllProducts, getProductById, destroyProduct, updateProduct, showProducts, showOneProduct, showProductsByCategory, adminProducts, productsIndexView };
+
+export { create, getAllProducts, getProductById, destroyProduct, updateProduct, showProducts, showOneProduct, showProductsByCategory, adminProducts, productsIndexView, paginate };

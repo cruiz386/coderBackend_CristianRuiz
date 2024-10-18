@@ -117,5 +117,464 @@
     "role": "admin",
     "isOnline": false,
     "__v": 0
+  },
+  {
+    "_id": "67054006be6cf134fbbb52a7",
+    "photo": "/public/assets/img-users/avatar_user_4.jpg",
+    "email": "cristian@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6705400cbe6cf134fbbb52a9",
+    "photo": "/public/assets/img-users/avatar_user_3.jpg",
+    "email": "pedro@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054fc4ec28cd16d499d33e",
+    "photo": "default_photo_url",
+    "email": "pepito@teco.com.ar",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054ffa53944c0735647fa2",
+    "photo": "default_photo_url",
+    "email": "prueba@mail.com.ar",
+    "password": "123465",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67068f007411592086c978fb",
+    "photo": "public/assets/img-users/avatar_user_4.jpg",
+    "email": "mail@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "670696033d73139b650cfcc3",
+    "photo": "/public/assets/img-users/avatar_user_2.jpg",
+    "email": "admin@mail.com",
+    "password": "123465",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6706e07a15aa95960a176a6a",
+    "photo": "https://i.ytimg.com/vi/bb5nPL38ptk/maxresdefault.jpg",
+    "email": "user2@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6709ad3267255bdb967a4174",
+    "photo": "url",
+    "email": "mongo@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67112ce91ea0ff08d031f1f5",
+    "photo": "/public/assets/img-users/avatar_user_2.jpg",
+    "email": "admin@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054006be6cf134fbbb52a7",
+    "photo": "/public/assets/img-users/avatar_user_4.jpg",
+    "email": "cristian@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6705400cbe6cf134fbbb52a9",
+    "photo": "/public/assets/img-users/avatar_user_3.jpg",
+    "email": "pedro@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054fc4ec28cd16d499d33e",
+    "photo": "default_photo_url",
+    "email": "pepito@teco.com.ar",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054ffa53944c0735647fa2",
+    "photo": "default_photo_url",
+    "email": "prueba@mail.com.ar",
+    "password": "123465",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67068f007411592086c978fb",
+    "photo": "public/assets/img-users/avatar_user_4.jpg",
+    "email": "mail@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "670696033d73139b650cfcc3",
+    "photo": "/public/assets/img-users/avatar_user_2.jpg",
+    "email": "admin@mail.com",
+    "password": "123465",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6706e07a15aa95960a176a6a",
+    "photo": "https://i.ytimg.com/vi/bb5nPL38ptk/maxresdefault.jpg",
+    "email": "user2@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6709ad3267255bdb967a4174",
+    "photo": "url",
+    "email": "mongo@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67112ce91ea0ff08d031f1f5",
+    "photo": "/public/assets/img-users/avatar_user_2.jpg",
+    "email": "admin@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "671280edf95de0270e26b768",
+    "photo": "./public/assets/img-users/Pedro.png",
+    "email": "jose@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054006be6cf134fbbb52a7",
+    "photo": "/public/assets/img-users/avatar_user_4.jpg",
+    "email": "cristian@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6705400cbe6cf134fbbb52a9",
+    "photo": "/public/assets/img-users/avatar_user_3.jpg",
+    "email": "pedro@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054fc4ec28cd16d499d33e",
+    "photo": "default_photo_url",
+    "email": "pepito@teco.com.ar",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054ffa53944c0735647fa2",
+    "photo": "default_photo_url",
+    "email": "prueba@mail.com.ar",
+    "password": "123465",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67068f007411592086c978fb",
+    "photo": "public/assets/img-users/avatar_user_4.jpg",
+    "email": "mail@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "670696033d73139b650cfcc3",
+    "photo": "/public/assets/img-users/avatar_user_2.jpg",
+    "email": "admin@mail.com",
+    "password": "123465",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6706e07a15aa95960a176a6a",
+    "photo": "https://i.ytimg.com/vi/bb5nPL38ptk/maxresdefault.jpg",
+    "email": "user2@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6709ad3267255bdb967a4174",
+    "photo": "url",
+    "email": "mongo@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67112ce91ea0ff08d031f1f5",
+    "photo": "/public/assets/img-users/avatar_user_2.jpg",
+    "email": "admin@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "671280edf95de0270e26b768",
+    "photo": "./public/assets/img-users/Pedro.png",
+    "email": "jose@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6712814757f54f339495f183",
+    "photo": "./public/assets/img-users/Pedro.png",
+    "email": "manuel@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054006be6cf134fbbb52a7",
+    "photo": "default_photo_url",
+    "email": "cristian@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6705400cbe6cf134fbbb52a9",
+    "photo": "/public/assets/img-users/avatar_user_3.jpg",
+    "email": "pedro@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054fc4ec28cd16d499d33e",
+    "photo": "default_photo_url",
+    "email": "pepito@teco.com.ar",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054ffa53944c0735647fa2",
+    "photo": "default_photo_url",
+    "email": "prueba@mail.com.ar",
+    "password": "123465",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67068f007411592086c978fb",
+    "photo": "public/assets/img-users/avatar_user_4.jpg",
+    "email": "mail@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "670696033d73139b650cfcc3",
+    "photo": "/public/assets/img-users/avatar_user_2.jpg",
+    "email": "admin@mail.com",
+    "password": "123465",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6706e07a15aa95960a176a6a",
+    "photo": "https://i.ytimg.com/vi/bb5nPL38ptk/maxresdefault.jpg",
+    "email": "user2@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6709ad3267255bdb967a4174",
+    "photo": "url",
+    "email": "mongo@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67112ce91ea0ff08d031f1f5",
+    "photo": "/public/assets/img-users/avatar_user_2.jpg",
+    "email": "admin@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "671280edf95de0270e26b768",
+    "photo": "./public/assets/img-users/Pedro.png",
+    "email": "jose@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6712814757f54f339495f183",
+    "photo": "./public/assets/img-users/Pedro.png",
+    "email": "manuel@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054006be6cf134fbbb52a7",
+    "photo": "default_photo_url",
+    "email": "cristian@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6705400cbe6cf134fbbb52a9",
+    "photo": "/public/assets/img-users/avatar_user_3.jpg",
+    "email": "pedro@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054fc4ec28cd16d499d33e",
+    "photo": "default_photo_url",
+    "email": "pepito@teco.com.ar",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67054ffa53944c0735647fa2",
+    "photo": "default_photo_url",
+    "email": "prueba@mail.com.ar",
+    "password": "123465",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67068f007411592086c978fb",
+    "photo": "public/assets/img-users/avatar_user_4.jpg",
+    "email": "mail@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "670696033d73139b650cfcc3",
+    "photo": "/public/assets/img-users/avatar_user_2.jpg",
+    "email": "admin@mail.com",
+    "password": "123465",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6709ad3267255bdb967a4174",
+    "photo": "url",
+    "email": "mongo@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "67112ce91ea0ff08d031f1f5",
+    "photo": "/public/assets/img-users/avatar_user_2.jpg",
+    "email": "admin@mail.com",
+    "password": "123456",
+    "role": "admin",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "671280edf95de0270e26b768",
+    "photo": "./public/assets/img-users/Pedro.png",
+    "email": "jose@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
+  },
+  {
+    "_id": "6712814757f54f339495f183",
+    "photo": "./public/assets/img-users/Pedro.png",
+    "email": "manuel@mail.com",
+    "password": "123456",
+    "role": "user",
+    "isOnline": false,
+    "__v": 0
   }
 ]

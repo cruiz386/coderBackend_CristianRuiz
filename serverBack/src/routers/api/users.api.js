@@ -4,13 +4,11 @@ import isValidDataUser from "../../middlewares/isValidDataUsers.mid.js";
 
 const usersRouter = Router()
 
-usersRouter.get('/',userController.readUsers)
-usersRouter.get('/:uid',userController.readUserById)
-
-usersRouter.post("/",  userController.createUser);
-usersRouter.put('/:uid',  userController.updateUser);
-
-usersRouter.delete('/:uid',userController.deleteUser)
+usersRouter.get('/', userController.readUsers)
+usersRouter.get('/:uid', userController.readUserById)
+usersRouter.post("/",isValidDataUser, userController.createUser);
+usersRouter.put('/:uid',isValidDataUser, userController.updateUser);
+usersRouter.delete('/:uid', userController.deleteUser)
 
 
 export default usersRouter

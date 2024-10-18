@@ -2,7 +2,7 @@ import productMongoManager from '../mongo/managers/product.mongo.js';
 import productsFileManager from '../files/products.fileManager.js';
 class ProductSyncManager {
     constructor() {
-        this.memoryProducts = []; // Array en memoria para almacenar los productos
+        this.memoryProducts = []; 
     }
 
     async syncProducts() {
@@ -36,7 +36,7 @@ class ProductSyncManager {
             }
 
             // 6. Sincronizar datos en memoria
-            this.memoryProducts = mongoProducts; // Actualizar el array en memoria
+            this.memoryProducts = mongoProducts; 
             console.log('Products synchronized successfully in FS and Memory.');
         } catch (error) {
             console.error('Error synchronizing products:', error);

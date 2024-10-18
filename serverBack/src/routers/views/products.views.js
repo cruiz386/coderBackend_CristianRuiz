@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { adminProducts, showProducts, showOneProduct,showProductsByCategory } from "../../controllers/products.controllers.js";
+import { adminProducts, showProducts, showOneProduct,showProductsByCategory, paginate } from "../../controllers/products.controllers.js";
 
 
 const productsViewRouter = Router()
