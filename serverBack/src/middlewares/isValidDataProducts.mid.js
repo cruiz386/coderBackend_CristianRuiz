@@ -1,5 +1,4 @@
-import crypto from "crypto";
-
+// Middleware para validar los datos de los productos 
 function isValidDataProduct(req, res, next) {
   try {
     const { title, stock, price, category, photo } = req.body;

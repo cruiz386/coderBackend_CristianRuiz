@@ -1,8 +1,9 @@
 import crypto from "crypto";
 
+// Middleware para validar los datos de los usuarios
 function isValidDataUser(req, res, next) {
-  try {
-    const { email, password, role, photo } = req.body;
+  try { 
+    const { email, password, role, photo, isOnline } = req.body;
 
     // Validación de Usuario
     if (!email) {
@@ -15,14 +16,16 @@ function isValidDataUser(req, res, next) {
     if (!password || typeof password !== 'string' || password.length < 6) {
       throw new Error("Password must be at least 6 characters long");
     }
+
     req.body.role = role || 0; // Valor por defecto
     req.body.photo = photo || "default_photo_url"; // Valor por defecto
+    req.body.isOnline = isOnline || false; // Valor por defecto
     req.body.id = req.body.id || generateHexId(); // Genera un ID hexadecimal si no existe
 
-    return next();
+    return next(); // Si todo es válido, avanza al siguiente middleware
   } catch (error) {
-    error.statusCode = 400;
-    return next(error);
+    error.statusCode = 400; // Establece el código de estado
+    return next(error); // Pasa el error al siguiente middleware
   }
 }
 

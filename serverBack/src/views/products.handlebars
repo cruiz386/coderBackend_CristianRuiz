@@ -1,13 +1,44 @@
 <h2 class="text-center p-5">PRODUCTS</h2>
-<section class="d-flex flex-wrap justify-content-evenly ">
-  {{#each products}}
-   <div class="card my-2 " style="width: 18rem;">
-    <img src="{{this.photo}}" class="card-img-top d-block mx-auto " alt="{{this.title}}" style="width: 15rem;">
-    <div class="card-body ">
-      <h5 class="card-title text-center my-3 ">{{this.title}}</h5>
-      <p class="card-text text-center my-3 ">{{this.category}}</p>
-      <a href="/products/{{this.id}}" class="btn btn-outline-primary d-block mx-auto my-3 w-50 ">+info</a>
+
+<section class="d-flex justify-content-center align-items-center my-5 w-75 mx-auto ">
+
+  <div id="products" class="d-flex flex-wrap justify-content-evenly" style="max-width: 1200px;">
+    {{#each products}}
+    <div class="card my-2 mx-auto" style="width: 18rem;">
+      <img src="{{this.photo}}" class="card-img-top mx-auto" alt="{{this.title}}"
+        style="max-width: 100%; height: auto;">
+      <div class="card-body">
+        <h5 class="card-title text-center my-3">{{this.title}}</h5>
+        <p class="card-text text-center">{{this.category}}</p>
+        <a href="/products/{{this._id}}" class="btn btn-outline-primary d-block mx-auto my-3 w-75">+info</a>
+
+        <button id="add-to-cart" class="btn btn-outline-success add-to-cart d-block mx-auto my-3 w-75"
+          data-id="{{this._id}}">Add to cart</button>
+
+      </div>
     </div>
+    {{else}}
+    <p>No products found.</p>
+    {{/each}}
   </div>
-  {{/each}}
+
+  <!-- Paginación -->
 </section>
+  <nav aria-label="Page navigation example"
+    class="my-3 mx-auto w-75 d-flex justify-content-center align-items-center p-3   ">
+    <ul class="pagination justify-content-center">
+      {{#if hasPrevPage}}
+      <li class="page-item">
+        <a class="page-link" href="/products?page={{prevPage}}">Previous</a>
+      </li>
+      {{/if}}
+      <li class="page-item active">
+        <a class="page-link" href="/products?page={{currentPage}}">{{currentPage}}</a>
+      </li>
+      {{#if hasNextPage}}
+      <li class="page-item">
+        <a class="page-link" href="/products?page={{nextPage}}">Next</a>
+      </li>
+      {{/if}}
+    </ul>
+  </nav>

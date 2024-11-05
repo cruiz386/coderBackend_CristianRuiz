@@ -1,6 +1,6 @@
 # Product and User Management API
 
-This project implements a RESTful API for managing products and users, allowing data to be stored in memory and files. It features basic CRUD operations with error handling and request logging.
+This project implements a RESTful API for managing products,users and carts, allowing data to be stored in memory, files and MongoDB. It features basic CRUD operations with error handling and request logging.
 
 ## Features
 
@@ -8,16 +8,38 @@ This project implements a RESTful API for managing products and users, allowing 
   - Create, read, update, and delete products.
   - Default values for properties.
   - Error handling for all routes.
+  - Validation for all routes.
 
 - **User Management**
   - Create, read, update, and delete users.
   - Default values for properties.
   - Error handling for all routes.
+  - Validation for all routes.
+
+- **Carts Management**
+  - Create, read, update, and delete carts.
+  - Default values for properties.
+  - Error handling for all routes.
+  - Validation for all routes.
 
 - **Logging**
   - Request logging with Morgan.
 
-## Data Models
+- **Security**
+  - Basic authentication.
+  
+- **Data Models**
+  - Product
+  - User
+  - Carts
+
+- **Database**
+  - In-memory
+  - File
+  - MongoDB
+
+
+
 
 ### Product
 Each product has the following properties:
@@ -35,6 +57,40 @@ Each user has the following properties:
 - `email`: Required
 - `password`: Required
 - `role`: Default value of 0
+
+### Carts
+Each cart has the following properties:
+- `_id`: Cart ID (12 bytes, hexadecimal)
+- `user_id`: Unique identifier (12 bytes, hexadecimal)
+- `product_ids`: Unique identifier (12 bytes, hexadecimal)
+- `state`:String, default: "reserved", states values: ["reserved", "paid", "delivered"]
+
+
+## API Router
+
+### Carts
+- cartsApiRouter.post("/", create);
+- cartsApiRouter.get("/", readAll);
+- cartsApiRouter.put("/:cid", update);
+- cartsApiRouter.delete("/:cid", destroy);
+- cartsApiRouter.get("/:cid", read);
+- cartsApiRouter.get("/total/:uid", calculateTotal);
+
+### Users
+- usersRouter.get('/', userController.readUsers)
+- usersRouter.get('/:uid', userController.readUserById)
+- usersRouter.post("/",isValidDataUser, userController.createUser);
+- usersRouter.put('/:uid',isValidDataUser, userController.updateUser);
+- usersRouter.delete('/:uid', userController.deleteUser)
+
+### Products
+- productsRouter.get('/', getAllProducts)
+- productsRouter.get('/paginate', paginate)
+- productsRouter.get('/:pid', getProductById)
+- productsRouter.post("/", isValidDataProduct, create);
+- productsRouter.put('/:pid', isValidDataProduct, updateProduct);
+- productsRouter.delete('/:pid', destroyProduct)
+
 
 ## API Endpoints
 
@@ -106,11 +162,45 @@ Each user has the following properties:
     - `statusCode: 200`
     - `{ response: Object }`
 
+### Carts
+
+- **POST /api/carts**
+  - Creates a new cart.
+  - Request body: `{ user: String, products?: Array, total?: Number }`
+  - Response:
+    - `statusCode: 201`
+    - `{ id: String, message: String }`
+  
+- **GET /api/carts**
+  - Retrieves all carts, optionally filtering by user.
+  - Response:
+    - `statusCode: 200`
+    - `{ response: Array }`
+  
+- **GET /api/carts/:cid**
+  - Retrieves a specific cart by ID.
+  - Response:
+    - `statusCode: 200`
+    - `{ response: Object }`
+  
+- **PUT /api/carts/:cid**
+  - Updates a specific cart by ID.
+  - Request body: `{ user?: String, products?: Array, total?: Number }`
+  - Response:
+    - `statusCode: 200`
+    - `{ response: Object }`
+  
+- **DELETE /api/carts/:cid**
+  - Deletes a specific cart by ID.
+  - Response:
+    - `statusCode: 200`
+    - `{ response: Object }`
+
 ## How to Run the API
 
 1. **Install dependencies:**
     
-    ```bash
+      ```bash
     npm install
      ```
 
@@ -128,11 +218,6 @@ Each user has the following properties:
 
 #### Clone repo: 
 git clone https://github.com/cruiz386/coderBackend_CristianRuiz.git
-
-
-
-
-
 
 
 

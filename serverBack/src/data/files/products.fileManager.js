@@ -91,7 +91,7 @@ class ProductsManager {
   async destroy(id) {
     try {
       if (!id) {
-        //   throw new Error("Product ID is required");
+        
         return null;
       }
       const allProducts = await this.readAll();
@@ -100,14 +100,14 @@ class ProductsManager {
       );
       if (index === -1) {
         return null;
-        //throw new Error("Product not found");
+        
       }
       allProducts.splice(index, 1);
       const stringAll = JSON.stringify(allProducts, null, 2);
       await fs.promises.writeFile(this.path, stringAll);
       return id;
     } catch (error) {
-      console.log(error);
+      
       throw error;
     }
   }
